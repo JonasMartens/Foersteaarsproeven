@@ -1,4 +1,6 @@
-﻿using ProudChickenEksamen.View;
+﻿using ProudChickenEksamen.Data;
+using ProudChickenEksamen.Model.Entities;
+using ProudChickenEksamen.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace ProudChickenEksamen.Controller
 {
     class Controller
     {
+        Repository repository = new Repository();
         GUI Gui = new GUI();
         public void Run()
         {
@@ -25,6 +28,11 @@ namespace ProudChickenEksamen.Controller
                     case 2:
                         Gui.VælgEMail();
                         break;
+
+                    case 3:
+                        Gui.VisKundeListe(repository.LoadKunder());
+                        break;
+
                     default:
                         Console.WriteLine("Ugyldigt valg!");
                         break;

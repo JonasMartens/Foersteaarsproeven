@@ -12,15 +12,7 @@ namespace ProudChickenEksamen.Model.Entities
         public string Dato { get; set; }
         public string SMSStandardBesked { get; set; }
         public string Custom { get; set; }
-
-
-        public List<SMS> StandardSMSBesked = new List<SMS>();
-        public SMS()
-        {
-            SMS sms1 = new SMS() { ID = 1, SMSStandardBesked = "Velkommen til Proud Chicken" };
-
-            StandardSMSBesked.Add(sms1);
-        }
+        public string SMSDato { get; set; }
     }
 }
 

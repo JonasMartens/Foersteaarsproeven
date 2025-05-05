@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace ProudChickenEksamen.View
 {
     class GUI
-    {
-        
+    {        
         public int MainMenuMetode()
         {
             Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Vis Liste (3)");
@@ -23,17 +22,40 @@ namespace ProudChickenEksamen.View
         }
         public int VælgEMail()
         {
-            Console.WriteLine("Vælg e-mail: 1, 2, 3 eller 4.");
+            Console.WriteLine("Vælg e-mail: VelkomstSMS (1), 2, 3 eller 4.");
             string EMailUserInput = Console.ReadLine();
             return Convert.ToInt32(EMailUserInput);
         }
 
         public int VælgListeKriterie()
         {
-            Console.WriteLine("Vælg mellem: OmrådeNr, By, 3, 4.");
+            Console.WriteLine("Vælg mellem: OmrådeNr (1), By, 3, 4.");
             string KriterieUserInput = Console.ReadLine();
             return Convert.ToInt32(KriterieUserInput);
         }
+
+        public List<Kunde> VisKundeListe(List<Kunde>kunder)
+        {
+            Console.WriteLine("1 = VelkomstSMS, 2 = TilbudsSMS 3 = FarvelSMS 4 = CustomSMS");
+            int i = 0;
+            while (i < kunder.Count)
+            {
+                Console.WriteLine($"\nID: {kunder[i].Id}, navn: {kunder[i].navn}, adresse: {kunder[i].Adresse}, områdenr: {kunder[i].OmrådeNr}, " +
+                    $"by: {kunder[i].By}, mobilnr: {kunder[i].MobilNr}, email: {kunder[i].EMail}");
+                int j = 0;
+
+                while (j < kunder[i].SendtSMS.Count)
+                {
+                    Console.Write($" {kunder[i].SendtSMS[j]}, ");
+                    j++;
+                }
+                i++;                
+                Console.WriteLine(" ");
+            }
+            return kunder;
+        }
+
+        
         public void VisListeOverSMSOgKriterie(List<SMS> StandardSMSBesked)
         {
             int i = 0;
@@ -43,8 +65,6 @@ namespace ProudChickenEksamen.View
                 Console.WriteLine(StandardSMSBesked[i]);
                 i++;
             }
-
-
         }
     }
 }

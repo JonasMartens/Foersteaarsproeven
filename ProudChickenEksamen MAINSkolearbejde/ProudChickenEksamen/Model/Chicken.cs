@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProudChickenEksamen.Model
 {
-    internal class Chicken
+    class Chicken
     {
+
     }
 }
