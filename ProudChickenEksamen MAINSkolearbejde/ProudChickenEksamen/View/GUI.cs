@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,23 +17,49 @@ namespace ProudChickenEksamen.View
         }
         public int VælgSMS()
         {
-            Console.WriteLine("Vælg Sms: 1, 2, 3 eller 4.");
+            Console.WriteLine("Vælg Sms: VelkomstSMS (1), Er i områdetSMS (2), FarvelSMS (3) eller CustomSMS (4).");
             string SMSUserInput = Console.ReadLine();
             return Convert.ToInt32(SMSUserInput);
         }
         public int VælgEMail()
         {
-            Console.WriteLine("Vælg e-mail: VelkomstSMS (1), 2, 3 eller 4.");
+            Console.WriteLine("Vælg e-mail: VelkomstEmail (1), TilbudsEmail (2), FarvelEmail (3) eller CustomEmail (4).");
             string EMailUserInput = Console.ReadLine();
             return Convert.ToInt32(EMailUserInput);
         }
 
         public int VælgListeKriterie()
         {
-            Console.WriteLine("Vælg mellem: OmrådeNr (1), By, 3, 4.");
+            Console.WriteLine("Vælg mellem: OmrådeNr (1), By (2).");
             string KriterieUserInput = Console.ReadLine();
             return Convert.ToInt32(KriterieUserInput);
         }
+        public string VælgOmrådeNummer()
+        {
+            Console.WriteLine("Vælg OmrådeNummer");
+            string OmrådeNummer = Console.ReadLine();
+            return OmrådeNummer;
+        }
+
+
+
+
+
+
+        public string CustomSMS()
+        {
+            Console.WriteLine("Input customSMS: ");
+            string CustomUserInput = Console.ReadLine();
+            return CustomUserInput;
+        }
+
+        public List<SMS> Print(List<SMS> nyListe)
+        {
+            Console.WriteLine(nyListe[0].SMSStandardBesked);
+            nyListe.RemoveAt(0);
+            return nyListe;
+        }
+
 
         public List<Kunde> VisKundeListe(List<Kunde>kunder)
         {
@@ -54,8 +81,16 @@ namespace ProudChickenEksamen.View
             }
             return kunder;
         }
+        public void VisFejl()
+        {
+            Console.WriteLine("Ugyldigt valg");
+        }
 
-        
+
+
+
+
+
         public void VisListeOverSMSOgKriterie(List<SMS> StandardSMSBesked)
         {
             int i = 0;

@@ -10,14 +10,6 @@ namespace ProudChickenEksamen.Data
 {
     class Repository
     {
-        public List<SMS> StandardSMSBesked = new List<SMS>();
-        public Repository()
-        {
-            SMS sms1 = new SMS() { ID = 1, SMSStandardBesked = "Velkommen til Proud Chicken" };
-
-            StandardSMSBesked.Add(sms1);
-        }
-
         private readonly string filePath = "kunder.json";
         public List<Kunde> LoadKunder()
         {

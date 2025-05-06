@@ -1,4 +1,5 @@
 ﻿using ProudChickenEksamen.Data;
+using ProudChickenEksamen.Model;
 using ProudChickenEksamen.Model.Entities;
 using ProudChickenEksamen.View;
 using System;
@@ -13,6 +14,7 @@ namespace ProudChickenEksamen.Controller
     {
         Repository repository = new Repository();
         GUI Gui = new GUI();
+        Chicken Chicken = new Chicken();
         public void Run()
         {
             while (true)
@@ -22,7 +24,7 @@ namespace ProudChickenEksamen.Controller
                 switch (choice)
                 {
                     case 1:
-                        Gui.VælgSMS();
+                        VaelgStandardSMS();
                         break;
 
                     case 2:
@@ -34,11 +36,45 @@ namespace ProudChickenEksamen.Controller
                         break;
 
                     default:
-                        Console.WriteLine("Ugyldigt valg!");
+                        Gui.VisFejl();
                         break;
                 }
             }
 
+        }
+        public void VaelgStandardSMS()
+        {
+            while (true)
+            {
+                int choice = Gui.VælgSMS();
+                switch (choice)
+                {
+                    case 1:                       
+                        Gui.Print(Chicken.TestMetode(choice));
+                        Gui.VælgListeKriterie();
+                        break;
+
+                    case 2:
+                        Gui.Print(Chicken.TestMetode(choice));
+                        Gui.VælgListeKriterie();
+                        break;
+
+                    case 3:
+                        Gui.Print(Chicken.TestMetode(choice));
+                        Gui.VælgListeKriterie();
+                        break;
+
+                    case 4:
+                        Gui.Print(Chicken.TestMetode(choice));
+                        Gui.VælgListeKriterie();
+                        break;
+
+
+                    default:
+                        Gui.VisFejl();
+                        break;
+                }
+            }
         }
     }
 }
