@@ -8,24 +8,57 @@ using System.Threading.Tasks;
 namespace ProudChickenEksamen.View
 {
     class GUI
+
+
+
+
+
+
     {        
         public int MainMenuMetode()
         {
             Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Vis Liste (3)");
             return int.Parse(Console.ReadLine());
         }
+
+
+
+
+
+
+
+
+
         public int VælgSMS()
         {
-            Console.WriteLine("Vælg Sms: 1, 2, 3 eller 4.");
-            string SMSUserInput = Console.ReadLine();
-            return Convert.ToInt32(SMSUserInput);
+            Console.WriteLine("Vælg Sms: VelkomstSMS (1), Er i OmrådetSMS (2), FarvelSMS (3) eller CustomSMS (4).");
+            int smsVALG = Convert.ToInt32(Console.ReadLine());
+            return smsVALG;
         }
+
+        
+
+        public string VisKreterierne()
+        {
+            Console.WriteLine("Til hem vil du sende en besked? Du kan vælge mellem -> OmrNr");
+            string userIn = Console.ReadLine();
+            return userIn;
+        }
+
+
+
+
         public int VælgEMail()
         {
-            Console.WriteLine("Vælg e-mail: VelkomstSMS (1), 2, 3 eller 4.");
+            Console.WriteLine("Vælg e-mail: VelkomstEmail (1), Er I OmrådetMail (2), 3 eller CustomMail (4).");
             string EMailUserInput = Console.ReadLine();
             return Convert.ToInt32(EMailUserInput);
         }
+
+       
+
+
+
 
         public int VælgListeKriterie()
         {
@@ -33,6 +66,14 @@ namespace ProudChickenEksamen.View
             string KriterieUserInput = Console.ReadLine();
             return Convert.ToInt32(KriterieUserInput);
         }
+
+
+
+
+
+
+
+
 
         public List<Kunde> VisKundeListe(List<Kunde>kunder)
         {
@@ -55,6 +96,10 @@ namespace ProudChickenEksamen.View
             return kunder;
         }
 
+
+
+
+
         
         public void VisListeOverSMSOgKriterie(List<SMS> StandardSMSBesked)
         {
@@ -66,5 +111,18 @@ namespace ProudChickenEksamen.View
                 i++;
             }
         }
+
+
+
+
+
+
+
+        public void VisFejl()
+        {
+            Console.WriteLine("Ugyldigt valg");
+        }
+
+
     }
 }
