@@ -53,7 +53,7 @@ namespace ProudChickenEksamen.Controller
         public void HaandterKriterieValg()
         {
             int kriterieValg = Gui.VælgListeKriterie();
-
+            int smsValg = Gui.VælgSMS();
             switch (kriterieValg)
             {
                 case 1: 
@@ -63,6 +63,16 @@ namespace ProudChickenEksamen.Controller
                     string bekreftelse = Gui.BekræftValgAfSMSOgKundeKriterie();
                     if (bekreftelse == "1")
                     {
+                        int i = 0;
+                        while (i < matchendeKunderOmrådeNr.Count)
+                        {
+                            Kunde kunde = matchendeKunderOmrådeNr[i];
+
+                            kunde.SendtSMS.Add(smsValg.ToString());
+                            kunde.SendtSMSDato.Add(DateTime.Now.ToString("d/M yy"));
+
+                            i++;
+                        }
                         repository.SaveKunder(matchendeKunderOmrådeNr);
                     }
                     else
