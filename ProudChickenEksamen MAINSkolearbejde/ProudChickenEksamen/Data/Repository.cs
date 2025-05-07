@@ -1,4 +1,4 @@
-﻿using ProudChickenEksamen.Model.Entities;
+﻿using ProudChickenEksamen.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

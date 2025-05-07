@@ -1,4 +1,4 @@
-﻿using ProudChickenEksamen.Model.Entities;
+﻿using ProudChickenEksamen.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace ProudChickenEksamen.View
 {
     class GUI
-    {        
+    {
         public int MainMenuMetode()
         {
             Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Vis Liste (3)");
@@ -34,17 +34,20 @@ namespace ProudChickenEksamen.View
             string KriterieUserInput = Console.ReadLine();
             return Convert.ToInt32(KriterieUserInput);
         }
+
         public string VælgOmrådeNummer()
         {
-            Console.WriteLine("Vælg OmrådeNummer");
+            Console.WriteLine("Indtast OmrådeNummer:");
             string OmrådeNummer = Console.ReadLine();
             return OmrådeNummer;
         }
 
-
-
-
-
+        public string VælgBy()
+        {
+            Console.WriteLine("Indtast By:");
+            string by = Console.ReadLine();
+            return by;
+        }
 
         public string CustomSMS()
         {
@@ -60,36 +63,49 @@ namespace ProudChickenEksamen.View
             return nyListe;
         }
 
-
-        public List<Kunde> VisKundeListe(List<Kunde>kunder)
+        public string BekræftValgAfSMSOgKundeKriterie()
         {
+            Console.WriteLine("Bekræftelse: Ja (1), Nej (2)");
+            string bekreftelse = Console.ReadLine();
+            return bekreftelse;
+        }
+
+
+        public List<Kunde> VisKundeListe(List<Kunde> kunder)
+        {
+            if (kunder == null || kunder.Count == 0)
+            {
+                Console.WriteLine("Ingen kunder fundet med de angivne kriterier.");
+                return kunder;
+            }
+
             Console.WriteLine("1 = VelkomstSMS, 2 = TilbudsSMS 3 = FarvelSMS 4 = CustomSMS");
             int i = 0;
             while (i < kunder.Count)
             {
                 Console.WriteLine($"\nID: {kunder[i].Id}, navn: {kunder[i].navn}, adresse: {kunder[i].Adresse}, områdenr: {kunder[i].OmrådeNr}, " +
                     $"by: {kunder[i].By}, mobilnr: {kunder[i].MobilNr}, email: {kunder[i].EMail}");
-                int j = 0;
 
-                while (j < kunder[i].SendtSMS.Count)
+                if (kunder[i].SendtSMS != null)
                 {
-                    Console.Write($" {kunder[i].SendtSMS[j]}, ");
-                    j++;
+                    int j = 0;
+                    while (j < kunder[i].SendtSMS.Count)
+                    {
+                        Console.Write($" {kunder[i].SendtSMS[j]}, ");
+                        j++;
+                    }
                 }
-                i++;                
+
+                i++;
                 Console.WriteLine(" ");
             }
             return kunder;
         }
+
         public void VisFejl()
         {
             Console.WriteLine("Ugyldigt valg");
         }
-
-
-
-
-
 
         public void VisListeOverSMSOgKriterie(List<SMS> StandardSMSBesked)
         {

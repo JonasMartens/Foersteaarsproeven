@@ -1,6 +1,6 @@
 ﻿using ProudChickenEksamen.Data;
 using ProudChickenEksamen.Model;
-using ProudChickenEksamen.Model.Entities;
+using ProudChickenEksamen.Services;
 using ProudChickenEksamen.View;
 using System;
 using System.Collections.Generic;
@@ -44,36 +44,43 @@ namespace ProudChickenEksamen.Controller
         }
         public void VaelgStandardSMS()
         {
-            while (true)
+            int choice = Gui.VælgSMS();
+            Gui.Print(Chicken.TestMetode(choice));
+            HaandterKriterieValg();
+
+        }
+
+        public void HaandterKriterieValg()
+        {
+            int kriterieValg = Gui.VælgListeKriterie();
+
+            switch (kriterieValg)
             {
-                int choice = Gui.VælgSMS();
-                switch (choice)
-                {
-                    case 1:                       
-                        Gui.Print(Chicken.TestMetode(choice));
-                        Gui.VælgListeKriterie();
-                        break;
-
-                    case 2:
-                        Gui.Print(Chicken.TestMetode(choice));
-                        Gui.VælgListeKriterie();
-                        break;
-
-                    case 3:
-                        Gui.Print(Chicken.TestMetode(choice));
-                        Gui.VælgListeKriterie();
-                        break;
-
-                    case 4:
-                        Gui.Print(Chicken.TestMetode(choice));
-                        Gui.VælgListeKriterie();
-                        break;
-
-
-                    default:
+                case 1: 
+                    string områdeNr = Gui.VælgOmrådeNummer();
+                    List<Kunde> matchendeKunderOmrådeNr = Chicken.FindKunderOmrådeNr(områdeNr);
+                    Gui.VisKundeListe(matchendeKunderOmrådeNr);
+                    string bekreftelse = Gui.BekræftValgAfSMSOgKundeKriterie();
+                    if (bekreftelse == "1")
+                    {
+                        repository.SaveKunder(matchendeKunderOmrådeNr);
+                    }
+                    else
+                    {
                         Gui.VisFejl();
-                        break;
-                }
+                    }
+                    break;
+
+                case 2: 
+                    string by = Gui.VælgBy();
+                    List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
+                    Gui.VisKundeListe(matchendeKunderBy);
+
+                    break;
+
+                default:
+                    Gui.VisFejl();
+                    break;
             }
         }
     }
