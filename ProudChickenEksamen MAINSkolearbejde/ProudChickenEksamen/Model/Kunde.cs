@@ -17,5 +17,7 @@ namespace ProudChickenEksamen.Model
         public string EMail { get; set; }
         public List<string> SendtSMS { get; set; }
         public List<string> SendtSMSDato { get; set; }
+        public List<string> SendtEmail { get; set; }
+        public List<string> SendtEmailDato { get; set; }
     }
 }

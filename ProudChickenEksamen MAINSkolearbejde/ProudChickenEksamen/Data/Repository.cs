@@ -1,10 +1,7 @@
 ﻿using ProudChickenEksamen.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Threading.Tasks;
+using System.Text.Unicode;
 
 namespace ProudChickenEksamen.Data
 {
@@ -19,9 +16,17 @@ namespace ProudChickenEksamen.Data
             return JsonSerializer.Deserialize<List<Kunde>>(json) ?? new List<Kunde>();
         }
         public void SaveKunder(List<Kunde> kunder)
-        {
-            string json = JsonSerializer.Serialize(kunder, new JsonSerializerOptions { WriteIndented = true });
+        {        
+            var options = new JsonSerializerOptions()       // Tilføjer Danske bogstaver
+            {
+            WriteIndented = true,
+            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
+
+            };
+
+            string json = JsonSerializer.Serialize(kunder, options);
             File.WriteAllText(filePath, json);
         }
+
     }
 }

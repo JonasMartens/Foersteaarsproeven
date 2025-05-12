@@ -13,14 +13,18 @@ namespace ProudChickenEksamen.Services
     class Chicken
     {
         public List<SMS> SMSList = new List<SMS>();
-        private List<SMS> nyListe = new List<SMS>();
+        private List<SMS> nySMSListe = new List<SMS>();
+
+        public List<EMail> EmailList = new List<EMail>();
+        private List<EMail> nyEmailListe = new List<EMail>();
+
         private Repository repository = new Repository();
         GUI gui = new GUI();
 
         public Chicken()
         {
             SMS sms1 = new SMS() { ID = 1, SMSStandardBesked = "Velkommen til Proud Chickens SMS Service." };
-            SMS sms2 = new SMS() { ID = 2, SMSStandardBesked = "Vores FoodTruck er netop nu på vej til sin sædvanlig plads. Vi ses snart." };
+            SMS sms2 = new SMS() { ID = 2, SMSStandardBesked = "Vores FoodTruck er netop nu på vej til sin sædvanlige plads. \nVi ses snart." };
             SMS sms3 = new SMS() { ID = 3, SMSStandardBesked = "Vi er kede af, at De ikke længere er medlem af Proud Chickens SMS Service." };
             SMS sms4 = new SMS() { ID = 4, SMSStandardBesked = "brugerInput" };
 
@@ -28,37 +32,75 @@ namespace ProudChickenEksamen.Services
             SMSList.Add(sms2);
             SMSList.Add(sms3);
             SMSList.Add(sms4);
+
+            EMail email1 = new EMail() { ID = 1, EmailStandardBesked = "Velkommen til Proud Chickens Email Service." };
+            EMail email2 = new EMail() { ID = 2, EmailStandardBesked = "Vores FoodTruck er netop nu på vej til sin sædvanlige plads. \nVi ses snart." };
+            EMail email3 = new EMail() { ID = 3, EmailStandardBesked = "Vi er kede af, at De ikke længere er medlem af Proud Chickens Email Service." };
+            EMail email4 = new EMail() { ID = 4, EmailStandardBesked = "brugerInput" };
+
+            EmailList.Add(email1);
+            EmailList.Add(email2);
+            EmailList.Add(email3);
+            EmailList.Add(email4);
         }
 
-        public List<SMS> TestMetode(int smsType)
+        public List<SMS> SMSValgt(int smsType)
         {
-            nyListe.Clear(); 
+            nySMSListe.Clear(); 
 
             switch (smsType)
             {
-                case 1: 
-                    nyListe.Add(SMSList[0]);
+                case 1:
+                    nySMSListe.Add(SMSList[0]);
                     break;
 
                 case 2:
-                    nyListe.Add(SMSList[1]);
+                    nySMSListe.Add(SMSList[1]);
                     break;
 
-                case 3: 
-                    nyListe.Add(SMSList[2]);
+                case 3:
+                    nySMSListe.Add(SMSList[2]);
                     break;
 
                 case 4: 
                     string brugerInput = gui.CustomSMS();
                     SMSList[3].SMSStandardBesked = brugerInput;
-                    nyListe.Add(SMSList[3]);
+                    nySMSListe.Add(SMSList[3]);
                     break;
 
                 default:
                     break;
             }
+            return nySMSListe;
+        }
+        public List<EMail> EmailValgt(int emailType)
+        {
+            nyEmailListe.Clear();
 
-            return nyListe;
+            switch (emailType)
+            {
+                case 1:
+                    nyEmailListe.Add(EmailList[0]);
+                    break;
+
+                case 2:
+                    nyEmailListe.Add(EmailList[1]);
+                    break;
+
+                case 3:
+                    nyEmailListe.Add(EmailList[2]);
+                    break;
+
+                case 4:
+                    string brugerInput = gui.CustomEmail();
+                    EmailList[3].EmailStandardBesked = brugerInput;
+                    nyEmailListe.Add(EmailList[3]);
+                    break;
+
+                default:
+                    break;
+            }
+            return nyEmailListe;
         }
 
         public List<Kunde> FindKunderOmrådeNr(string områdeNr)

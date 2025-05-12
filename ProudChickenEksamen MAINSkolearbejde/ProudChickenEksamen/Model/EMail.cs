@@ -8,7 +8,7 @@ namespace ProudChickenEksamen.Model
 {
     class EMail
     {
-        public string ID { get; set; }
+        public int ID { get; set; }
         public string Dato { get; set; }
         public string EmailStandardBesked { get; set; }
         public string Custom { get; set; }

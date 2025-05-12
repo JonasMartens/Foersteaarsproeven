@@ -55,6 +55,12 @@ namespace ProudChickenEksamen.View
             string CustomUserInput = Console.ReadLine();
             return CustomUserInput;
         }
+        public string CustomEmail()
+        {
+            Console.WriteLine("Input custom Email: ");
+            string CustomUserInput = Console.ReadLine();
+            return CustomUserInput;
+        }
 
         public List<SMS> Print(List<SMS> nyListe)
         {
@@ -62,8 +68,14 @@ namespace ProudChickenEksamen.View
             nyListe.RemoveAt(0);
             return nyListe;
         }
+        public List<EMail> Print(List<EMail> nyListe)
+        {
+            Console.WriteLine(nyListe[0].EmailStandardBesked);
+            nyListe.RemoveAt(0);
+            return nyListe;
+        }
 
-        public string BekræftValgAfSMSOgKundeKriterie()
+        public string BekræftValgAfSMSEllerEmailOgKundeKriterie()
         {
             Console.WriteLine("Bekræftelse: Ja (1), Nej (2)");
             string bekreftelse = Console.ReadLine();
@@ -88,12 +100,43 @@ namespace ProudChickenEksamen.View
 
                 if (kunder[i].SendtSMS != null)
                 {
+                    Console.Write("Sms Type: ");
                     int j = 0;
                     while (j < kunder[i].SendtSMS.Count)
                     {
-                        Console.Write($" {kunder[i].SendtSMS[j]}, ");
+
+                        Console.Write($"{kunder[i].SendtSMS[j]}, ");
+
                         j++;
                     }
+                    Console.Write("\nSms dato: ");
+                    j = 0;
+                    while (j < kunder[i].SendtSMS.Count)
+                    {
+
+                        Console.Write($"{kunder[i].SendtSMSDato[j]}, ");
+
+                        j++;
+                    }
+                    Console.Write("\nEmail type: ");
+                    j = 0;
+                    while (j < kunder[i].SendtEmail.Count)
+                    {
+
+                        Console.Write($"{kunder[i].SendtEmail[j]}, ");
+
+                        j++;
+                    }
+                    Console.Write("\nEmail dato: ");
+                    j = 0;
+                    while (j < kunder[i].SendtEmail.Count)
+                    {
+
+                        Console.Write($"{kunder[i].SendtEmailDato[j]}, ");
+
+                        j++;
+                    }
+
                 }
 
                 i++;

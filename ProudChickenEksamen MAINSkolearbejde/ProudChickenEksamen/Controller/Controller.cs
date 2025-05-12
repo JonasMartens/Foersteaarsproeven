@@ -24,11 +24,11 @@ namespace ProudChickenEksamen.Controller
                 switch (choice)
                 {
                     case 1:
-                        VaelgStandardSMS();
+                        SMSValgOgKriterieValg();
                         break;
 
                     case 2:
-                        Gui.VælgEMail();
+                        EmailValgOgKriterieValg();
                         break;
 
                     case 3:
@@ -40,40 +40,48 @@ namespace ProudChickenEksamen.Controller
                         break;
                 }
             }
-
-        }
-        public void VaelgStandardSMS()
-        {
-            int choice = Gui.VælgSMS();
-            Gui.Print(Chicken.TestMetode(choice));
-            HaandterKriterieValg();
-
         }
 
-        public void HaandterKriterieValg()
+        public void SMSValgOgKriterieValg()
         {
             int kriterieValg = Gui.VælgListeKriterie();
             int smsValg = Gui.VælgSMS();
+            Gui.Print(Chicken.SMSValgt(smsValg));
             switch (kriterieValg)
             {
                 case 1: 
                     string områdeNr = Gui.VælgOmrådeNummer();
+                    List<Kunde> nuværendeKundeData = repository.LoadKunder();
                     List<Kunde> matchendeKunderOmrådeNr = Chicken.FindKunderOmrådeNr(områdeNr);
+                    List<Kunde> opdateretKundeData = new List<Kunde>();
                     Gui.VisKundeListe(matchendeKunderOmrådeNr);
-                    string bekreftelse = Gui.BekræftValgAfSMSOgKundeKriterie();
+                    string bekreftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
+
                     if (bekreftelse == "1")
                     {
                         int i = 0;
-                        while (i < matchendeKunderOmrådeNr.Count)
-                        {
-                            Kunde kunde = matchendeKunderOmrådeNr[i];
 
-                            kunde.SendtSMS.Add(smsValg.ToString());
-                            kunde.SendtSMSDato.Add(DateTime.Now.ToString("d/M yy"));
+                        while (i < nuværendeKundeData.Count)
+                        {
+                            Kunde kunde = nuværendeKundeData[i];
+
+                            Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
+                            
+                            if (kunde1 == null)
+                            {
+                                opdateretKundeData.Add(kunde);
+                            }
+                            else
+                            {
+                                kunde1.SendtSMS.Add(smsValg.ToString());
+                                kunde1.SendtSMSDato.Add(DateTime.Now.ToString("dd/MM yy"));
+
+                                opdateretKundeData.Add(kunde1);
+                            }
 
                             i++;
                         }
-                        repository.SaveKunder(matchendeKunderOmrådeNr);
+                        repository.SaveKunder(opdateretKundeData);
                     }
                     else
                     {
@@ -82,6 +90,65 @@ namespace ProudChickenEksamen.Controller
                     break;
 
                 case 2: 
+                    string by = Gui.VælgBy();
+                    List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
+                    Gui.VisKundeListe(matchendeKunderBy);
+
+                    break;
+
+                default:
+                    Gui.VisFejl();
+                    break;
+            }
+        }
+        public void EmailValgOgKriterieValg()
+        {
+            int kriterieValg = Gui.VælgListeKriterie();
+            int EmailValg = Gui.VælgEMail();
+            Gui.Print(Chicken.EmailValgt(EmailValg));
+            switch (kriterieValg)
+            {
+                case 1:
+                    string områdeNr = Gui.VælgOmrådeNummer();
+                    List<Kunde> nuværendeKundeData = repository.LoadKunder();
+                    List<Kunde> matchendeKunderOmrådeNr = Chicken.FindKunderOmrådeNr(områdeNr);
+                    List<Kunde> opdateretKundeData = new List<Kunde>();
+                    Gui.VisKundeListe(matchendeKunderOmrådeNr);
+                    string bekræftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
+
+                    if (bekræftelse == "1")
+                    {
+                        int i = 0;
+
+                        while (i < nuværendeKundeData.Count)
+                        {
+                            Kunde kunde = nuværendeKundeData[i];
+
+                            Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
+
+                            if (kunde1 == null)
+                            {
+                                opdateretKundeData.Add(kunde);
+                            }
+                            else
+                            {
+                                kunde1.SendtEmail.Add(EmailValg.ToString());
+                                kunde1.SendtEmailDato.Add(DateTime.Now.ToString("dd/MM yy"));
+
+                                opdateretKundeData.Add(kunde1);
+                            }
+
+                            i++;
+                        }
+                        repository.SaveKunder(opdateretKundeData);
+                    }
+                    else
+                    {
+                        Gui.VisFejl();
+                    }
+                    break;
+
+                case 2:
                     string by = Gui.VælgBy();
                     List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
                     Gui.VisKundeListe(matchendeKunderBy);
