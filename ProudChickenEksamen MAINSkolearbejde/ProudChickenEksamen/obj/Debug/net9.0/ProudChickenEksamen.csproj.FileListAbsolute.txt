@@ -1,0 +1,84 @@
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfoInputs.cache
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfo.cs
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.csproj.CoreCompileInputs.cache
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.exe
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.deps.json
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.runtimeconfig.json
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\refint\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.genruntimeconfig.cache
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen\ProudChickenEksamen\obj\Debug\net9.0\ref\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.exe
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.deps.json
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.runtimeconfig.json
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfoInputs.cache
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfo.cs
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.csproj.CoreCompileInputs.cache
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\refint\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.genruntimeconfig.cache
+C:\Users\Smithgaard\Desktop\DATAMATIKER\EKSAMEN!!\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ref\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.exe
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.deps.json
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.runtimeconfig.json
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfoInputs.cache
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfo.cs
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.csproj.CoreCompileInputs.cache
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\refint\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.genruntimeconfig.cache
+C:\Users\willt\Downloads\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ref\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.exe
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.deps.json
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.runtimeconfig.json
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfoInputs.cache
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfo.cs
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.csproj.CoreCompileInputs.cache
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\refint\ProudChickenEksamen.dll
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.genruntimeconfig.cache
+C:\Users\willt\Downloads\Maybe works\Foersteaarsproeven-main(1)\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ref\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfoInputs.cache
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfo.cs
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.csproj.CoreCompileInputs.cache
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\refint\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.exe
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.deps.json
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.runtimeconfig.json
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.genruntimeconfig.cache
+C:\Users\Smithgaard\Desktop\EKSAMENTEST\Foersteaarsproeven-main\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ref\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.exe
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.deps.json
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.runtimeconfig.json
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfoInputs.cache
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.AssemblyInfo.cs
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.csproj.CoreCompileInputs.cache
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\refint\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.pdb
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.genruntimeconfig.cache
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ref\ProudChickenEksamen.dll
