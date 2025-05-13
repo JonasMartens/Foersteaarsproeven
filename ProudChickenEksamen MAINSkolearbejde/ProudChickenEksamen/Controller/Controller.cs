@@ -32,13 +32,50 @@ namespace ProudChickenEksamen.Controller
                         break;
 
                     case 3:
-                        Gui.VisKundeListe(repository.LoadKunder());
+                        SøgefunktionValgKriterier();
                         break;
 
                     default:
                         Gui.VisFejl();
                         break;
                 }
+            }
+        }
+
+        public void SøgefunktionValgKriterier()
+        {
+            int søgeKriterieValg = Gui.SøgIKundeListeUdFraKriterier();
+
+            switch (søgeKriterieValg)
+            {
+
+                case 1:
+                    Gui.VælgOmrådeNummer();
+                    break;
+
+                case 2:
+                    Gui.VælgBy();
+                    break;
+
+                case 3:
+                    Chicken.TestMetodeTilTid();
+                    break;
+
+                case 4:
+                    Gui.VælgID();
+                    break;
+
+                case 5:
+                    Gui.VælgSMS();
+                    break;
+
+                case 6:
+                    Gui.VælgEMail();
+                    break;
+
+                default:
+                    Gui.VisFejl();
+                    break;
             }
         }
 

@@ -12,54 +12,80 @@ namespace ProudChickenEksamen.View
     {
         public int MainMenuMetode()
         {
-            Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Vis Liste (3)");
+            Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Søg i kundeliste (3)");
             return int.Parse(Console.ReadLine());
         }
+
         public int VælgSMS()
         {
             Console.WriteLine("Vælg Sms: VelkomstSMS (1), Er i områdetSMS (2), FarvelSMS (3) eller CustomSMS (4).");
-            string SMSUserInput = Console.ReadLine();
-            return Convert.ToInt32(SMSUserInput);
+            return int.Parse(Console.ReadLine());
         }
+
         public int VælgEMail()
         {
             Console.WriteLine("Vælg e-mail: VelkomstEmail (1), TilbudsEmail (2), FarvelEmail (3) eller CustomEmail (4).");
-            string EMailUserInput = Console.ReadLine();
-            return Convert.ToInt32(EMailUserInput);
+            return int.Parse(Console.ReadLine());
+        }
+
+        public int SøgIKundeListeUdFraKriterier()
+        {
+            Console.WriteLine("Søg i kundeliste ud fra områdenr (1), by (2), efter dato (3), ID (4), smstype (5), Emailtype (6)");
+            return int.Parse(Console.ReadLine());
         }
 
         public int VælgListeKriterie()
         {
             Console.WriteLine("Vælg mellem: OmrådeNr (1), By (2).");
-            string KriterieUserInput = Console.ReadLine();
-            return Convert.ToInt32(KriterieUserInput);
+            return int.Parse(Console.ReadLine());
         }
 
         public string VælgOmrådeNummer()
         {
             Console.WriteLine("Indtast OmrådeNummer:");
-            string OmrådeNummer = Console.ReadLine();
-            return OmrådeNummer;
+            return Console.ReadLine();             
         }
 
         public string VælgBy()
         {
             Console.WriteLine("Indtast By:");
-            string by = Console.ReadLine();
-            return by;
+            return Console.ReadLine();
+        }
+
+        public string VælgDato()
+        {
+            Console.WriteLine("Vælg startDato (dd/MM yy) og slutDato (dd/MM yy):");
+            return Console.ReadLine();
+        }
+        public string StartDatoMetode()
+        {
+            Console.WriteLine("Vælg startDato (dd/MM yy):");
+            return Console.ReadLine();
+        }
+
+        public string SlutDatoMetode()
+        {
+            Console.WriteLine("Vælg  slutDato (dd/MM yy):");
+            return Console.ReadLine();
+        }
+
+
+        public int VælgID()
+        {
+            Console.WriteLine("Vælg brugerID:");
+            return int.Parse(Console.ReadLine());
         }
 
         public string CustomSMS()
         {
             Console.WriteLine("Input customSMS: ");
-            string CustomUserInput = Console.ReadLine();
-            return CustomUserInput;
+            return Console.ReadLine();
         }
+
         public string CustomEmail()
         {
             Console.WriteLine("Input custom Email: ");
-            string CustomUserInput = Console.ReadLine();
-            return CustomUserInput;
+            return Console.ReadLine();
         }
 
         public List<SMS> Print(List<SMS> nyListe)
@@ -68,6 +94,7 @@ namespace ProudChickenEksamen.View
             nyListe.RemoveAt(0);
             return nyListe;
         }
+
         public List<EMail> Print(List<EMail> nyListe)
         {
             Console.WriteLine(nyListe[0].EmailStandardBesked);
@@ -78,10 +105,8 @@ namespace ProudChickenEksamen.View
         public string BekræftValgAfSMSEllerEmailOgKundeKriterie()
         {
             Console.WriteLine("Bekræftelse: Ja (1), Nej (2)");
-            string bekreftelse = Console.ReadLine();
-            return bekreftelse;
+            return Console.ReadLine();
         }
-
 
         public List<Kunde> VisKundeListe(List<Kunde> kunder)
         {
@@ -136,9 +161,7 @@ namespace ProudChickenEksamen.View
 
                         j++;
                     }
-
                 }
-
                 i++;
                 Console.WriteLine(" ");
             }
@@ -148,17 +171,6 @@ namespace ProudChickenEksamen.View
         public void VisFejl()
         {
             Console.WriteLine("Ugyldigt valg");
-        }
-
-        public void VisListeOverSMSOgKriterie(List<SMS> StandardSMSBesked)
-        {
-            int i = 0;
-
-            while (i < StandardSMSBesked.Count)
-            {
-                Console.WriteLine(StandardSMSBesked[i]);
-                i++;
-            }
         }
     }
 }

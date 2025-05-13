@@ -4,6 +4,7 @@ using ProudChickenEksamen.View;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace ProudChickenEksamen.Services
         private List<EMail> nyEmailListe = new List<EMail>();
 
         private Repository repository = new Repository();
-        GUI gui = new GUI();
+        GUI Gui = new GUI();
 
         public Chicken()
         {
@@ -63,7 +64,7 @@ namespace ProudChickenEksamen.Services
                     break;
 
                 case 4: 
-                    string brugerInput = gui.CustomSMS();
+                    string brugerInput = Gui.CustomSMS();
                     SMSList[3].SMSStandardBesked = brugerInput;
                     nySMSListe.Add(SMSList[3]);
                     break;
@@ -92,7 +93,7 @@ namespace ProudChickenEksamen.Services
                     break;
 
                 case 4:
-                    string brugerInput = gui.CustomEmail();
+                    string brugerInput = Gui.CustomEmail();
                     EmailList[3].EmailStandardBesked = brugerInput;
                     nyEmailListe.Add(EmailList[3]);
                     break;
@@ -138,10 +139,39 @@ namespace ProudChickenEksamen.Services
                 }
                 i++;
             }
-
             return matchendeKunder;
         }
+        public void TestMetodeTilTid()
+        {
+            List<Kunde> kundeliste = repository.LoadKunder();
 
+            DateTime fra = DateTime.ParseExact(Gui.StartDatoMetode(), "dd/MM yy", CultureInfo.InvariantCulture);
+            DateTime til = DateTime.ParseExact(Gui.SlutDatoMetode(), "dd/MM yy", CultureInfo.InvariantCulture);
 
+            foreach (Kunde k in kundeliste)
+            {
+                List<DateTime> matchendeDatoer = new List<DateTime>();
+
+                foreach (string s in k.SendtSMSDato)
+                {
+                    DateTime dato = DateTime.ParseExact(s, "dd/MM yy", CultureInfo.InvariantCulture);
+
+                    if (dato >= fra && dato <= til)
+                    {
+                        matchendeDatoer.Add(dato);
+                    }
+                }
+
+                if (matchendeDatoer.Count > 0)
+                {
+                    Console.WriteLine("Kunde Id: " + k.Id); // Én gang per kunde
+                    
+                    foreach (DateTime d in matchendeDatoer)
+                    {
+                        Console.WriteLine(d.ToString("dd/MM yy")); // Kun relevante datoer
+                    }
+                }
+            }
+        }
     }
 }
