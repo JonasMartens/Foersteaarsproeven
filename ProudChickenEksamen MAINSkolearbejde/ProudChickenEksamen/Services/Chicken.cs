@@ -19,7 +19,7 @@ namespace ProudChickenEksamen.Services
         public List<EMail> EmailList = new List<EMail>();
         private List<EMail> nyEmailListe = new List<EMail>();
 
-        private Repository repository = new Repository();
+        private IRepository repository = new JsonRepository();
         GUI Gui = new GUI();
 
         public Chicken()
@@ -119,7 +119,6 @@ namespace ProudChickenEksamen.Services
                 }
                 i++;
             }
-
             return matchendeKunder;
         }
 
@@ -142,44 +141,115 @@ namespace ProudChickenEksamen.Services
             return matchendeKunder;
         }
 
-        public void TestMetodeTilTid(string a, string b)
+        public void EmailValgChicken(int a)
         {
-            List<Kunde> kundeliste = repository.LoadKunder();
+            string områdeNr = Gui.VælgOmrådeNummer();
+            List<Kunde> nuværendeKundeData = repository.LoadKunder();
+            List<Kunde> matchendeKunderOmrådeNr = FindKunderOmrådeNr(områdeNr);
+            List<Kunde> opdateretKundeData = new List<Kunde>();
+            Gui.VisKundeListe(matchendeKunderOmrådeNr);
+            string bekræftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
 
-            DateTime fra = DateTime.ParseExact(a, "dd/MM yy", CultureInfo.InvariantCulture);
-            DateTime til = DateTime.ParseExact(b, "dd/MM yy", CultureInfo.InvariantCulture);
+            if (bekræftelse == "1")
+            {
+                int i = 0;
+
+                while (i < nuværendeKundeData.Count)
+                {
+                    Kunde kunde = nuværendeKundeData[i];
+
+                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
+
+                    if (kunde1 == null)
+                    {
+                        opdateretKundeData.Add(kunde);
+                    }
+                    else
+                    {
+                        kunde1.SendtEmail.Add(a.ToString());
+                        kunde1.SendtEmailDato.Add(DateTime.Now.ToString("dd-MM yy"));
+
+                        opdateretKundeData.Add(kunde1);
+                    }
+
+                    i++;
+                }
+                repository.SaveKunder(opdateretKundeData);
+            }
+            else
+            {
+                Gui.AfvisBekræft();
+            }
+        }
+
+        public void FiltrerEfterSMSDato(string b, string c)
+        {          
+            List<Kunde> kundeliste = repository.LoadKunder(); 
+
+            DateTime fra = DateTime.ParseExact(b, "dd-MM yy", CultureInfo.InvariantCulture);
+            DateTime til = DateTime.ParseExact(c, "dd-MM yy", CultureInfo.InvariantCulture);
 
             foreach (Kunde k in kundeliste)
             {
-                List<(DateTime, string)> matchendeSMS = new List<(DateTime, string)>();
+                List<(DateTime, string)> matchendeBesked = new List<(DateTime, string)>();
 
                 for (int i = 0; i < k.SendtSMSDato.Count; i++)
                 {
-                    DateTime dato = DateTime.ParseExact(k.SendtSMSDato[i], "dd/MM yy", CultureInfo.InvariantCulture);
+                    DateTime dato = DateTime.ParseExact(k.SendtSMSDato[i], "dd-MM yy", CultureInfo.InvariantCulture);
 
                     if (dato >= fra && dato <= til)
                     {
-                        string smsNummer = i < k.SendtSMS.Count ? k.SendtSMS[i] : "Ukendt";
-                        matchendeSMS.Add((dato, smsNummer));
+                        string nummerType = i < k.SendtSMS.Count ? k.SendtSMS[i] : "Ukendt";
+                        matchendeBesked.Add((dato, nummerType));
                     }
                 }
 
-                if (matchendeSMS.Count > 0)
+                if (matchendeBesked.Count > 0)
                 {
                     Console.WriteLine("Kunde Id: " + k.Id);
 
-                    foreach ((DateTime dato, string smsNummer) in matchendeSMS)
+                    foreach ((DateTime dato, string nummerType) in matchendeBesked)
                     {
-                        Console.WriteLine($"{dato:dd/MM yy} - SMS nummer: {smsNummer}");
+                        Console.WriteLine($"{dato:dd-MM yy} - SMS nummer: {nummerType}");
                     }
                     Console.WriteLine("\n");
                 }
             }
         }
+        public void FiltrerEfterEmailDato(string b, string c)
+        {
+            List<Kunde> kundeliste = repository.LoadKunder();
 
+            DateTime fra = DateTime.ParseExact(b, "dd-MM yy", CultureInfo.InvariantCulture);
+            DateTime til = DateTime.ParseExact(c, "dd-MM yy", CultureInfo.InvariantCulture);
 
+            foreach (Kunde k in kundeliste)
+            {
+                List<(DateTime, string)> matchendeBesked = new List<(DateTime, string)>();
 
+                for (int i = 0; i < k.SendtEmailDato.Count; i++)
+                {
+                    DateTime dato = DateTime.ParseExact(k.SendtEmailDato[i], "dd-MM yy", CultureInfo.InvariantCulture);
 
+                    if (dato >= fra && dato <= til)
+                    {
+                        string nummerType = i < k.SendtEmail.Count ? k.SendtEmail[i] : "Ukendt";
+                        matchendeBesked.Add((dato, nummerType));
+                    }
+                }
+
+                if (matchendeBesked.Count > 0)
+                {
+                    Console.WriteLine("Kunde Id: " + k.Id);
+
+                    foreach ((DateTime dato, string nummerType) in matchendeBesked)
+                    {
+                        Console.WriteLine($"{dato:dd-MM yy} - Email nummer: {nummerType}");
+                    }
+                    Console.WriteLine("\n");
+                }
+            }
+        }
         public void smsValgChicken(int smsValg)
         {
             string områdeNr = Gui.VælgOmrådeNummer();
@@ -206,22 +276,18 @@ namespace ProudChickenEksamen.Services
                     else
                     {
                         kunde1.SendtSMS.Add(smsValg.ToString());
-                        kunde1.SendtSMSDato.Add(DateTime.Now.ToString("dd/MM yy"));
+                        kunde1.SendtSMSDato.Add(DateTime.Now.ToString("dd-MM yy"));
 
                         opdateretKundeData.Add(kunde1);
                     }
-
                     i++;
                 }
                 repository.SaveKunder(opdateretKundeData);
             }
             else
             {
-                Gui.VisFejl();
+                Gui.AfvisBekræft();
             }
         }
-
-
-
     }
 }

@@ -54,21 +54,26 @@ namespace ProudChickenEksamen.View
 
         public string VælgDato()
         {
-            Console.WriteLine("Vælg startDato (dd/MM yy) og slutDato (dd/MM yy):");
+            Console.WriteLine("Vælg startDato (dd-MM yy) og slutDato (dd-MM yy):");
             return Console.ReadLine();
         }
         public string StartDatoMetode()
         {
-            Console.WriteLine("Vælg startDato (dd/MM yy):");
+            Console.WriteLine("Vælg startDato (dd-MM yy):");
             return Console.ReadLine();
         }
 
         public string SlutDatoMetode()
         {
-            Console.WriteLine("Vælg  slutDato (dd/MM yy):");
+            Console.WriteLine("Vælg slutDato (dd-MM yy):");
             return Console.ReadLine();
         }
 
+        public int VælgSMSEllerEmail()
+        {
+            Console.WriteLine("Vælg SMS (1) eller Email (2).");
+            return int.Parse(Console.ReadLine());
+        }
 
         public int VælgID()
         {
@@ -106,6 +111,44 @@ namespace ProudChickenEksamen.View
         {
             Console.WriteLine("Bekræftelse: Ja (1), Nej (2)");
             return Console.ReadLine();
+        }
+        
+        public List<Kunde> VisKunderFraOmrådeNr(List<Kunde> kunder)
+        {
+            if (kunder == null || kunder.Count == 0)
+            {
+                Console.WriteLine("Ingen kunder fundet med de angivne kriterier.");
+                return kunder;
+            }
+
+            Console.WriteLine("\nDisse kunder bor i områdenummer: " + kunder[0].OmrådeNr);
+            int i = 0;
+            while (i < kunder.Count)
+            {
+                Console.WriteLine("Kunde ID: " + kunder[i].Id);
+                i++;
+            }
+            Console.WriteLine("");
+            return kunder;
+        }
+
+        public List<Kunde> VisKunderFraBy(List<Kunde> kunder)
+        {
+            if (kunder == null || kunder.Count == 0)
+            {
+                Console.WriteLine("Ingen kunder fundet med de angivne kriterier.");
+                return kunder;
+            }
+
+            Console.WriteLine("\nDisse kunder bor i byen: " + kunder[0].By);
+            int i = 0;
+            while (i < kunder.Count)
+            {
+                Console.WriteLine("Kunde ID: " + kunder[i].Id);
+                i++;
+            }
+            Console.WriteLine("");
+            return kunder;
         }
 
         public List<Kunde> VisKundeListe(List<Kunde> kunder)
@@ -172,5 +215,11 @@ namespace ProudChickenEksamen.View
         {
             Console.WriteLine("Ugyldigt valg");
         }
+        public void AfvisBekræft()
+        {
+            Console.Clear();
+            Console.WriteLine("Afsendelse afbrudt. Du sendes til Main Menu.\n");
+        }
+
     }
 }

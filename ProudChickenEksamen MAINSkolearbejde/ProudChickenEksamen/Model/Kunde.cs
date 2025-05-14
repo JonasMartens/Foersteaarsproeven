@@ -8,6 +8,8 @@ namespace ProudChickenEksamen.Model
 {
     class Kunde
     {
+       
+
         public int Id { get; set; }
         public string navn { get; set; }
         public string Adresse { get; set; }

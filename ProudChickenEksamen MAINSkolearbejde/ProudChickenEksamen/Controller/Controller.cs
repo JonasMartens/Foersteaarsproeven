@@ -12,7 +12,7 @@ namespace ProudChickenEksamen.Controller
 {
     class Controller
     {
-        Repository repository = new Repository();
+        JsonRepository repository = new JsonRepository();
         GUI Gui = new GUI();
         Chicken Chicken = new Chicken();
         public void Run()
@@ -48,17 +48,30 @@ namespace ProudChickenEksamen.Controller
 
             switch (søgeKriterieValg)
             {
-
                 case 1:
-                    Gui.VælgOmrådeNummer();
+                    List<Kunde> matchendOmrådernr = Chicken.FindKunderOmrådeNr(Gui.VælgOmrådeNummer());
+                    Gui.VisKunderFraOmrådeNr(matchendOmrådernr);
                     break;
 
                 case 2:
-                    Gui.VælgBy();
+                    List<Kunde> matchendeBy = Chicken.FindKunderBy(Gui.VælgBy());
+                    Gui.VisKunderFraBy(matchendeBy);
                     break;
 
                 case 3:
-                    Chicken.TestMetodeTilTid(Gui.StartDatoMetode(), Gui.SlutDatoMetode());
+                    int a = Gui.VælgSMSEllerEmail();
+                    if (a == 1)
+                    {
+                        Chicken.FiltrerEfterSMSDato(Gui.StartDatoMetode(), Gui.SlutDatoMetode());
+                    }
+                    else if  (a == 2)
+                    {
+                        Chicken.FiltrerEfterEmailDato(Gui.StartDatoMetode(), Gui.SlutDatoMetode());                        
+                    }
+                    else
+                    {
+                        Gui.VisFejl();                        
+                    }
                     break;
 
                 case 4:
@@ -111,43 +124,7 @@ namespace ProudChickenEksamen.Controller
             switch (kriterieValg)
             {
                 case 1:
-                    string områdeNr = Gui.VælgOmrådeNummer();
-                    List<Kunde> nuværendeKundeData = repository.LoadKunder();
-                    List<Kunde> matchendeKunderOmrådeNr = Chicken.FindKunderOmrådeNr(områdeNr);
-                    List<Kunde> opdateretKundeData = new List<Kunde>();
-                    Gui.VisKundeListe(matchendeKunderOmrådeNr);
-                    string bekræftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
-
-                    if (bekræftelse == "1")
-                    {
-                        int i = 0;
-
-                        while (i < nuværendeKundeData.Count)
-                        {
-                            Kunde kunde = nuværendeKundeData[i];
-
-                            Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
-
-                            if (kunde1 == null)
-                            {
-                                opdateretKundeData.Add(kunde);
-                            }
-                            else
-                            {
-                                kunde1.SendtEmail.Add(EmailValg.ToString());
-                                kunde1.SendtEmailDato.Add(DateTime.Now.ToString("dd/MM yy"));
-
-                                opdateretKundeData.Add(kunde1);
-                            }
-
-                            i++;
-                        }
-                        repository.SaveKunder(opdateretKundeData);
-                    }
-                    else
-                    {
-                        Gui.VisFejl();
-                    }
+                    Chicken.EmailValgChicken(EmailValg);
                     break;
 
                 case 2:
@@ -155,6 +132,7 @@ namespace ProudChickenEksamen.Controller
                     List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
                     Gui.VisKundeListe(matchendeKunderBy);
                     break;
+
                 default:
                     Gui.VisFejl();
                     break;
