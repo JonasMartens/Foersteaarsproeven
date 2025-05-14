@@ -58,7 +58,7 @@ namespace ProudChickenEksamen.Controller
                     break;
 
                 case 3:
-                    Chicken.TestMetodeTilTid();
+                    Chicken.TestMetodeTilTid(Gui.StartDatoMetode(), Gui.SlutDatoMetode());
                     break;
 
                 case 4:
@@ -84,46 +84,11 @@ namespace ProudChickenEksamen.Controller
             int kriterieValg = Gui.VælgListeKriterie();
             int smsValg = Gui.VælgSMS();
             Gui.Print(Chicken.SMSValgt(smsValg));
+            
             switch (kriterieValg)
             {
-                case 1: 
-                    string områdeNr = Gui.VælgOmrådeNummer();
-                    List<Kunde> nuværendeKundeData = repository.LoadKunder();
-                    List<Kunde> matchendeKunderOmrådeNr = Chicken.FindKunderOmrådeNr(områdeNr);
-                    List<Kunde> opdateretKundeData = new List<Kunde>();
-                    Gui.VisKundeListe(matchendeKunderOmrådeNr);
-                    string bekreftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
-
-                    if (bekreftelse == "1")
-                    {
-                        int i = 0;
-
-                        while (i < nuværendeKundeData.Count)
-                        {
-                            Kunde kunde = nuværendeKundeData[i];
-
-                            Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
-                            
-                            if (kunde1 == null)
-                            {
-                                opdateretKundeData.Add(kunde);
-                            }
-                            else
-                            {
-                                kunde1.SendtSMS.Add(smsValg.ToString());
-                                kunde1.SendtSMSDato.Add(DateTime.Now.ToString("dd/MM yy"));
-
-                                opdateretKundeData.Add(kunde1);
-                            }
-
-                            i++;
-                        }
-                        repository.SaveKunder(opdateretKundeData);
-                    }
-                    else
-                    {
-                        Gui.VisFejl();
-                    }
+                case 1:
+                    Chicken.smsValgChicken(smsValg);
                     break;
 
                 case 2: 
@@ -189,9 +154,7 @@ namespace ProudChickenEksamen.Controller
                     string by = Gui.VælgBy();
                     List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
                     Gui.VisKundeListe(matchendeKunderBy);
-
                     break;
-
                 default:
                     Gui.VisFejl();
                     break;

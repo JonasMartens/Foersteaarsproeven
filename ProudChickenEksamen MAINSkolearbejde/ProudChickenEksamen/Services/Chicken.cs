@@ -141,37 +141,87 @@ namespace ProudChickenEksamen.Services
             }
             return matchendeKunder;
         }
-        public void TestMetodeTilTid()
+
+        public void TestMetodeTilTid(string a, string b)
         {
             List<Kunde> kundeliste = repository.LoadKunder();
 
-            DateTime fra = DateTime.ParseExact(Gui.StartDatoMetode(), "dd/MM yy", CultureInfo.InvariantCulture);
-            DateTime til = DateTime.ParseExact(Gui.SlutDatoMetode(), "dd/MM yy", CultureInfo.InvariantCulture);
+            DateTime fra = DateTime.ParseExact(a, "dd/MM yy", CultureInfo.InvariantCulture);
+            DateTime til = DateTime.ParseExact(b, "dd/MM yy", CultureInfo.InvariantCulture);
 
             foreach (Kunde k in kundeliste)
             {
-                List<DateTime> matchendeDatoer = new List<DateTime>();
+                List<(DateTime, string)> matchendeSMS = new List<(DateTime, string)>();
 
-                foreach (string s in k.SendtSMSDato)
+                for (int i = 0; i < k.SendtSMSDato.Count; i++)
                 {
-                    DateTime dato = DateTime.ParseExact(s, "dd/MM yy", CultureInfo.InvariantCulture);
+                    DateTime dato = DateTime.ParseExact(k.SendtSMSDato[i], "dd/MM yy", CultureInfo.InvariantCulture);
 
                     if (dato >= fra && dato <= til)
                     {
-                        matchendeDatoer.Add(dato);
+                        string smsNummer = i < k.SendtSMS.Count ? k.SendtSMS[i] : "Ukendt";
+                        matchendeSMS.Add((dato, smsNummer));
                     }
                 }
 
-                if (matchendeDatoer.Count > 0)
+                if (matchendeSMS.Count > 0)
                 {
-                    Console.WriteLine("Kunde Id: " + k.Id); // Én gang per kunde
-                    
-                    foreach (DateTime d in matchendeDatoer)
+                    Console.WriteLine("Kunde Id: " + k.Id);
+
+                    foreach ((DateTime dato, string smsNummer) in matchendeSMS)
                     {
-                        Console.WriteLine(d.ToString("dd/MM yy")); // Kun relevante datoer
+                        Console.WriteLine($"{dato:dd/MM yy} - SMS nummer: {smsNummer}");
                     }
+                    Console.WriteLine("\n");
                 }
             }
         }
+
+
+
+
+        public void smsValgChicken(int smsValg)
+        {
+            string områdeNr = Gui.VælgOmrådeNummer();
+            List<Kunde> nuværendeKundeData = repository.LoadKunder();
+            List<Kunde> matchendeKunderOmrådeNr = FindKunderOmrådeNr(områdeNr);
+            List<Kunde> opdateretKundeData = new List<Kunde>();
+            Gui.VisKundeListe(matchendeKunderOmrådeNr);
+            string bekreftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
+
+            if (bekreftelse == "1")
+            {
+                int i = 0;
+
+                while (i < nuværendeKundeData.Count)
+                {
+                    Kunde kunde = nuværendeKundeData[i];
+
+                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
+
+                    if (kunde1 == null)
+                    {
+                        opdateretKundeData.Add(kunde);
+                    }
+                    else
+                    {
+                        kunde1.SendtSMS.Add(smsValg.ToString());
+                        kunde1.SendtSMSDato.Add(DateTime.Now.ToString("dd/MM yy"));
+
+                        opdateretKundeData.Add(kunde1);
+                    }
+
+                    i++;
+                }
+                repository.SaveKunder(opdateretKundeData);
+            }
+            else
+            {
+                Gui.VisFejl();
+            }
+        }
+
+
+
     }
 }
