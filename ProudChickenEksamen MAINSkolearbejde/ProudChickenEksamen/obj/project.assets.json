@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Smithgaard\\Desktop\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen\\ProudChickenEksamen.csproj",
+      "projectUniqueName": "C:\\Users\\Smithgaard\\Desktop\\VisSøgning\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen\\ProudChickenEksamen.csproj",
       "projectName": "ProudChickenEksamen",
-      "projectPath": "C:\\Users\\Smithgaard\\Desktop\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen\\ProudChickenEksamen.csproj",
+      "projectPath": "C:\\Users\\Smithgaard\\Desktop\\VisSøgning\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen\\ProudChickenEksamen.csproj",
       "packagesPath": "C:\\Users\\Smithgaard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Smithgaard\\Desktop\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen\\obj\\",
+      "outputPath": "C:\\Users\\Smithgaard\\Desktop\\VisSøgning\\ProudChickenEksamen MAINSkolearbejde\\ProudChickenEksamen\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

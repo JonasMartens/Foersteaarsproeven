@@ -62,11 +62,11 @@ namespace ProudChickenEksamen.Controller
                     int a = Gui.VælgSMSEllerEmail();
                     if (a == 1)
                     {
-                        Chicken.FiltrerEfterSMSDato(Gui.StartDatoMetode(), Gui.SlutDatoMetode());
+                        Chicken.FiltrerEfterSMSDato(Gui.VælgStartDato(), Gui.VælgSlutDato());
                     }
                     else if  (a == 2)
                     {
-                        Chicken.FiltrerEfterEmailDato(Gui.StartDatoMetode(), Gui.SlutDatoMetode());                        
+                        Chicken.FiltrerEfterEmailDato(Gui.VælgStartDato(), Gui.VælgSlutDato());                        
                     }
                     else
                     {
@@ -75,15 +75,18 @@ namespace ProudChickenEksamen.Controller
                     break;
 
                 case 4:
-                    Gui.VælgID();
+                    List<Kunde> matchendeId = Chicken.FindKunderID(Gui.VælgID());
+                    Gui.VisKunderFraID(matchendeId);
                     break;
 
                 case 5:
-                    Gui.VælgSMS();
+                    List<string> matchendeSMSTyper = Chicken.FindAntalKunderSendtSMS(Gui.VælgSMS());
+                    Gui.VisAntalSendtSMS(matchendeSMSTyper);
                     break;
 
                 case 6:
-                    Gui.VælgEMail();
+                    List<string> matchendeEmailTyper = Chicken.FindAntalKunderSendtEmail(Gui.VælgEMail());
+                    Gui.VisAntalSendtEmail(matchendeEmailTyper);
                     break;
 
                 default:
@@ -94,7 +97,7 @@ namespace ProudChickenEksamen.Controller
 
         public void SMSValgOgKriterieValg()
         {
-            int kriterieValg = Gui.VælgListeKriterie();
+            int kriterieValg = Gui.VælgListeFraOmrådeNrEllerBy();
             int smsValg = Gui.VælgSMS();
             Gui.Print(Chicken.SMSValgt(smsValg));
             
@@ -107,7 +110,7 @@ namespace ProudChickenEksamen.Controller
                 case 2: 
                     string by = Gui.VælgBy();
                     List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
-                    Gui.VisKundeListe(matchendeKunderBy);
+                    Gui.VisHeleKundeListenMedAlleInfo(matchendeKunderBy);
 
                     break;
 
@@ -116,9 +119,10 @@ namespace ProudChickenEksamen.Controller
                     break;
             }
         }
+
         public void EmailValgOgKriterieValg()
         {
-            int kriterieValg = Gui.VælgListeKriterie();
+            int kriterieValg = Gui.VælgListeFraOmrådeNrEllerBy();
             int EmailValg = Gui.VælgEMail();
             Gui.Print(Chicken.EmailValgt(EmailValg));
             switch (kriterieValg)
@@ -130,7 +134,7 @@ namespace ProudChickenEksamen.Controller
                 case 2:
                     string by = Gui.VælgBy();
                     List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
-                    Gui.VisKundeListe(matchendeKunderBy);
+                    Gui.VisHeleKundeListenMedAlleInfo(matchendeKunderBy);
                     break;
 
                 default:

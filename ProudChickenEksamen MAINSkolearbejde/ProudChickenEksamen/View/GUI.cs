@@ -34,7 +34,7 @@ namespace ProudChickenEksamen.View
             return int.Parse(Console.ReadLine());
         }
 
-        public int VælgListeKriterie()
+        public int VælgListeFraOmrådeNrEllerBy()
         {
             Console.WriteLine("Vælg mellem: OmrådeNr (1), By (2).");
             return int.Parse(Console.ReadLine());
@@ -52,18 +52,19 @@ namespace ProudChickenEksamen.View
             return Console.ReadLine();
         }
 
-        public string VælgDato()
+        public string VælgStartDatoOgSlutDato()
         {
             Console.WriteLine("Vælg startDato (dd-MM yy) og slutDato (dd-MM yy):");
             return Console.ReadLine();
         }
-        public string StartDatoMetode()
+
+        public string VælgStartDato()
         {
             Console.WriteLine("Vælg startDato (dd-MM yy):");
             return Console.ReadLine();
         }
 
-        public string SlutDatoMetode()
+        public string VælgSlutDato()
         {
             Console.WriteLine("Vælg slutDato (dd-MM yy):");
             return Console.ReadLine();
@@ -151,7 +152,52 @@ namespace ProudChickenEksamen.View
             return kunder;
         }
 
-        public List<Kunde> VisKundeListe(List<Kunde> kunder)
+        public List<Kunde> VisKunderFraID(List<Kunde> kunder)
+        {
+            if (kunder == null || kunder.Count == 0)
+            {
+                Console.WriteLine("Ingen kunder fundet med de angivne kriterier.");
+                return kunder;
+            }
+
+            Console.WriteLine("\nKundeId nummer: " + kunder[0].Id + " tilhører ");
+            int i = 0;
+            while (i < kunder.Count)
+            {
+                Console.WriteLine($"\nNavn: {kunder[i].navn}\nAdresse: {kunder[i].Adresse}\nOmrådenr: {kunder[i].OmrådeNr}" +
+                    $"\nBy: {kunder[i].By}\nMobilnr: {kunder[i].MobilNr}\nEmail: {kunder[i].EMail}");
+                i++;
+            }
+            Console.WriteLine("");
+            return kunder;
+        }
+
+        public List<string> VisAntalSendtSMS(List<string> antalSms)
+        {
+            int i = 0;
+            while (i < antalSms.Count)
+            {
+                Console.WriteLine(antalSms[i]);
+                i++;
+            }
+            Console.WriteLine();
+            return antalSms;
+        }
+
+        public List<string> VisAntalSendtEmail(List<string> antalEmail)
+        {
+            int i = 0;
+            while (i < antalEmail.Count)
+            {
+                Console.WriteLine(antalEmail[i]);
+                i++;
+            }
+            Console.WriteLine();
+            return antalEmail;
+
+        }
+
+        public List<Kunde> VisHeleKundeListenMedAlleInfo(List<Kunde> kunder)
         {
             if (kunder == null || kunder.Count == 0)
             {
@@ -220,6 +266,5 @@ namespace ProudChickenEksamen.View
             Console.Clear();
             Console.WriteLine("Afsendelse afbrudt. Du sendes til Main Menu.\n");
         }
-
     }
 }

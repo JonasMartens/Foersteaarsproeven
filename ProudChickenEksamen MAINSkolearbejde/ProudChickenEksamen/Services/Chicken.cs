@@ -74,6 +74,7 @@ namespace ProudChickenEksamen.Services
             }
             return nySMSListe;
         }
+
         public List<EMail> EmailValgt(int emailType)
         {
             nyEmailListe.Clear();
@@ -134,11 +135,124 @@ namespace ProudChickenEksamen.Services
                 if (kunde.By == by)
                 {
                     matchendeKunder.Add(kunde);
-
                 }
                 i++;
             }
             return matchendeKunder;
+        }
+
+        public List<Kunde> FindKunderID(int Id)
+        {
+            List<Kunde> kundeliste = repository.LoadKunder();
+            List<Kunde> matchendeKunder = new List<Kunde>();
+
+            int i = 0;
+            while (i < kundeliste.Count)
+            {
+                Kunde kunde = kundeliste[i];
+                if (kunde.Id == Id)
+                {
+                    matchendeKunder.Add(kunde);
+                }
+                i++;
+            }
+            return matchendeKunder;
+        }
+
+        public List<string> FindAntalKunderSendtSMS(int smsType)
+        {
+            List<Kunde> kundeliste = repository.LoadKunder();
+            List<string> kundeModtogAntalSms = new List<string>();
+            string smsType1 = smsType.ToString();
+
+            int i = 0;
+            while (i < kundeliste.Count)
+            {
+                Kunde kunde = kundeliste[i];
+
+                int antalSms = 0;
+                int j = 0;
+                while (j < kunde.SendtSMS.Count)
+                {
+                    if (kunde.SendtSMS[j] == smsType1)
+                    {
+                        antalSms++;
+                    }
+                    j++;
+                }                
+                string kundeMedAntalString = "Kunde " + kunde.Id + " har modtaget " + antalSms + " styk af type nr. " + smsType1;
+                kundeModtogAntalSms.Add(kundeMedAntalString);
+                i++;
+            }
+            return kundeModtogAntalSms;
+        }
+
+        public List<string> FindAntalKunderSendtEmail(int emailType)
+        {
+            List<Kunde> kundeliste = repository.LoadKunder();
+            List<string> kundeModtogAntalEmail = new List<string>();
+            string emailType1 = emailType.ToString();
+
+            int i = 0;
+            while (i < kundeliste.Count)
+            {
+                Kunde kunde = kundeliste[i];
+
+                int antalEmail = 0;
+                int j = 0;
+                while (j < kunde.SendtSMS.Count)
+                {
+                    if (kunde.SendtSMS[j] == emailType1)
+                    {
+                        antalEmail++;
+                    }
+                    j++;
+                }
+                string kundeMedAntalString = "Kunde " + kunde.Id + " har modtaget " + antalEmail + " styk af type nr. " + emailType1;
+                kundeModtogAntalEmail.Add(kundeMedAntalString);
+                i++;
+            }
+            return kundeModtogAntalEmail;
+        }
+
+        public void smsValgChicken(int smsValg)
+        {
+            string områdeNr = Gui.VælgOmrådeNummer();
+            List<Kunde> nuværendeKundeData = repository.LoadKunder();
+            List<Kunde> matchendeKunderOmrådeNr = FindKunderOmrådeNr(områdeNr);
+            List<Kunde> opdateretKundeData = new List<Kunde>();
+            Gui.VisHeleKundeListenMedAlleInfo(matchendeKunderOmrådeNr);
+            string bekreftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
+
+            if (bekreftelse == "1")
+            {
+                int i = 0;
+
+                while (i < nuværendeKundeData.Count)
+                {
+                    Kunde kunde = nuværendeKundeData[i];
+
+                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
+
+                    if (kunde1 == null)
+                    {
+                        opdateretKundeData.Add(kunde);
+                    }
+                    else
+                    {
+                        kunde1.SendtSMS.Add(smsValg.ToString());
+                        kunde1.SendtSMSDato.Add(DateTime.Now.ToString("dd-MM yy"));
+
+                        opdateretKundeData.Add(kunde1);
+                    }
+                    i++;
+                }
+                repository.SaveKunder(opdateretKundeData);
+            }
+            else
+            {
+                Gui.AfvisBekræft();
+            }
         }
 
         public void EmailValgChicken(int a)
@@ -147,7 +261,7 @@ namespace ProudChickenEksamen.Services
             List<Kunde> nuværendeKundeData = repository.LoadKunder();
             List<Kunde> matchendeKunderOmrådeNr = FindKunderOmrådeNr(områdeNr);
             List<Kunde> opdateretKundeData = new List<Kunde>();
-            Gui.VisKundeListe(matchendeKunderOmrådeNr);
+            Gui.VisHeleKundeListenMedAlleInfo(matchendeKunderOmrådeNr);
             string bekræftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
 
             if (bekræftelse == "1")
@@ -216,6 +330,7 @@ namespace ProudChickenEksamen.Services
                 }
             }
         }
+
         public void FiltrerEfterEmailDato(string b, string c)
         {
             List<Kunde> kundeliste = repository.LoadKunder();
@@ -248,45 +363,6 @@ namespace ProudChickenEksamen.Services
                     }
                     Console.WriteLine("\n");
                 }
-            }
-        }
-        public void smsValgChicken(int smsValg)
-        {
-            string områdeNr = Gui.VælgOmrådeNummer();
-            List<Kunde> nuværendeKundeData = repository.LoadKunder();
-            List<Kunde> matchendeKunderOmrådeNr = FindKunderOmrådeNr(områdeNr);
-            List<Kunde> opdateretKundeData = new List<Kunde>();
-            Gui.VisKundeListe(matchendeKunderOmrådeNr);
-            string bekreftelse = Gui.BekræftValgAfSMSEllerEmailOgKundeKriterie();
-
-            if (bekreftelse == "1")
-            {
-                int i = 0;
-
-                while (i < nuværendeKundeData.Count)
-                {
-                    Kunde kunde = nuværendeKundeData[i];
-
-                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
-
-                    if (kunde1 == null)
-                    {
-                        opdateretKundeData.Add(kunde);
-                    }
-                    else
-                    {
-                        kunde1.SendtSMS.Add(smsValg.ToString());
-                        kunde1.SendtSMSDato.Add(DateTime.Now.ToString("dd-MM yy"));
-
-                        opdateretKundeData.Add(kunde1);
-                    }
-                    i++;
-                }
-                repository.SaveKunder(opdateretKundeData);
-            }
-            else
-            {
-                Gui.AfvisBekræft();
             }
         }
     }
