@@ -27,7 +27,7 @@ namespace ProudChickenEksamen.Data
             return JsonSerializer.Deserialize<List<Kunde>>(json) ?? new List<Kunde>();
         }
 
-        public void Read()
+        public string Read(int a)
         {
             throw new NotImplementedException();
         }

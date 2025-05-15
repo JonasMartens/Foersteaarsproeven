@@ -23,6 +23,6 @@ namespace ProudChickenEksamen.Data
 
         public void Delete();
 
-        public void Read();
+        public string Read(int a);
     }
 }

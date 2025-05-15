@@ -1,4 +1,5 @@
 ﻿using ProudChickenEksamen.Model;
+using System.Data.SqlClient;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
@@ -7,8 +8,28 @@ namespace ProudChickenEksamen.Data
 {
     class SQLRepository : IRepository
     {
-        private readonly string filePath = "kunder.json";
-
+        public string databaseConnection(string a)
+        {
+            string con = "Data Source=LAPTOP-U1TFVM09;Initial Catalog=Kunder;Integrated Security=True;";
+            string svar = "";
+            using (SqlConnection connection = new SqlConnection(con))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(a, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string ID = reader.GetString(0);
+                            string Name = reader.GetString(1);
+                            svar += ID + ":" + Name + " - ";
+                        }
+                    }
+                }
+            }
+            return svar;
+        }
         public void Delete()
         {
             throw new NotImplementedException();
@@ -19,33 +40,34 @@ namespace ProudChickenEksamen.Data
             throw new NotImplementedException();
         }
 
-        public List<Kunde> LoadKunder()
+
+        public string Read(int a)
         {
-            if (!File.Exists(filePath))
-                return new List<Kunde>();
-            string json = File.ReadAllText(filePath);
-            return JsonSerializer.Deserialize<List<Kunde>>(json) ?? new List<Kunde>();
+            string b = "";
+            if (a == 1)
+            {
+                b = "SELECT Navn, OmrådeNr FROM Person";
+            }
+            return b;
         }
 
-        public void Read()
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }        
+        
+        
+
+
+        
+        
+        public List<Kunde> LoadKunder()
         {
             throw new NotImplementedException();
         }
 
         public void SaveKunder(List<Kunde> kunder)
-        {        
-            var options = new JsonSerializerOptions()       // Tilføjer Danske bogstaver
-            {
-            WriteIndented = true,
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
-
-            };
-
-            string json = JsonSerializer.Serialize(kunder, options);
-            File.WriteAllText(filePath, json);
-        }
-
-        public void Update()
         {
             throw new NotImplementedException();
         }

@@ -12,7 +12,7 @@ namespace ProudChickenEksamen.Controller
 {
     class Controller
     {
-        JsonRepository repository = new JsonRepository();
+        SQLRepository repository = new SQLRepository();
         GUI Gui = new GUI();
         Chicken Chicken = new Chicken();
         public void Run()
@@ -24,7 +24,9 @@ namespace ProudChickenEksamen.Controller
                 switch (choice)
                 {
                     case 1:
-                        SMSValgOgKriterieValg();
+                        string a = repository.databaseConnection(repository.Read(1));
+                        Console.WriteLine(a);
+                        //SMSValgOgKriterieValg();
                         break;
 
                     case 2:

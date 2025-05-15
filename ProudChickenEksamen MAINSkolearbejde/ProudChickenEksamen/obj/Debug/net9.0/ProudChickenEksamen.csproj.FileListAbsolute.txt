@@ -139,3 +139,11 @@ C:\Users\Smithgaard\Desktop\VisSøgning\ProudChickenEksamen MAINSkolearbejde\Pro
 C:\Users\Smithgaard\Desktop\VisSøgning\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.pdb
 C:\Users\Smithgaard\Desktop\VisSøgning\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.genruntimeconfig.cache
 C:\Users\Smithgaard\Desktop\VisSøgning\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ref\ProudChickenEksamen.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\System.Data.SqlClient.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\runtimes\win-x64\native\sni.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\runtimes\win-x86\native\sni.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChickenEksamen.csproj.AssemblyReference.cache
+C:\Users\Smithgaard\Desktop\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen MAINSkolearbejde\ProudChickenEksamen\obj\Debug\net9.0\ProudChi.94E13DF7.Up2Date
