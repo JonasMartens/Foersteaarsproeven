@@ -1,4 +1,5 @@
 ﻿using ProudChickenEksamen.Model;
+using ProudChickenEksamen.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,71 @@ namespace ProudChickenEksamen.View
     {
         public int MainMenuMetode()
         {
-            Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Søg i kundeliste (3)");
-            return int.Parse(Console.ReadLine());
+            try
+            {
+                Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Søg i kundeliste (3)");
+                return int.Parse(Console.ReadLine());
+
+            }
+            catch 
+            { 
+                return 404;
+            }
         }
+
+
+        public void FilterSMS(List<(DateTime, string, int)> matchendeBesked)
+        {
+            List<int> visteKundeIds = new List<int>();
+
+            foreach (var besked in matchendeBesked)
+            {
+                int kundeId = besked.Item3;
+
+                if (!visteKundeIds.Contains(kundeId))
+                {
+                    Console.WriteLine("Kunde Id: " + kundeId);
+
+                    foreach (var b in matchendeBesked)
+                    {
+                        if (b.Item3 == kundeId)
+                        {
+                            Console.WriteLine($"{b.Item1:dd-MM yy} - SMS type: {b.Item2}");
+                        }
+                    }
+
+                    Console.WriteLine();
+                    visteKundeIds.Add(kundeId);
+                }
+            }
+        }
+
+        public void FilterEmail(List<(DateTime, string, int)> matchendeBesked)
+        {
+            List<int> visteKundeIds = new List<int>();
+
+            foreach (var besked in matchendeBesked)
+            {
+                int kundeId = besked.Item3;
+
+                if (!visteKundeIds.Contains(kundeId))
+                {
+                    Console.WriteLine("Kunde Id: " + kundeId);
+
+                    foreach (var b in matchendeBesked)
+                    {
+                        if (b.Item3 == kundeId)
+                        {
+                            Console.WriteLine($"{b.Item1:dd-MM yy} - Email type: {b.Item2}");
+                        }
+                    }
+
+                    Console.WriteLine();
+                    visteKundeIds.Add(kundeId);
+                }
+            }
+        }
+
 
         public int VælgSMS()
         {

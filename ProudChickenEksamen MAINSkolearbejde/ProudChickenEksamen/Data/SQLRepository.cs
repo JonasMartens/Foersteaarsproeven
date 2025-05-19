@@ -21,9 +21,12 @@ namespace ProudChickenEksamen.Data
                     {
                         while (reader.Read())
                         {
-                            string ID = reader.GetString(0);
-                            string Name = reader.GetString(1);
-                            svar += ID + ":" + Name + " - ";
+                            if (!reader.IsDBNull(0) && !reader.IsDBNull(1))
+                            {
+                                string ID = reader.GetString(0);
+                                string Name = reader.GetString(1);
+                                svar += ID + " : " + Name + "\n";
+                            }
                         }
                     }
                 }
@@ -46,7 +49,7 @@ namespace ProudChickenEksamen.Data
             string b = "";
             if (a == 1)
             {
-                b = "SELECT Navn, OmrådeNr FROM Person";
+                b = "SELECT VejAdresseringsNavn, HusNummer FROM Lokalitet WHERE VejAdresseringsNavn LIKE '%Svalevej%'";
             }
             return b;
         }

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ProudChickenEksamen.Controller
 {
-    class Controller
+    class SQLController
     {
-        
+        SQLRepository repository = new SQLRepository();
         GUI Gui = new GUI();
         Chicken Chicken = new Chicken();
         public void Run()
@@ -24,7 +24,8 @@ namespace ProudChickenEksamen.Controller
                 switch (choice)
                 {
                     case 1:
-                        SMSValgOgKriterieValg();                        
+                        string a = repository.databaseConnection(repository.Read(1));
+                        Console.WriteLine(a);                    
                         break;
 
                     case 2:

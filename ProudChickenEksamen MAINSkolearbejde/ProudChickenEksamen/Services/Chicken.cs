@@ -20,6 +20,7 @@ namespace ProudChickenEksamen.Services
         private List<EMail> nyEmailListe = new List<EMail>();
 
         private IRepository repository = new JsonRepository();
+
         GUI Gui = new GUI();
 
         public Chicken()
@@ -296,16 +297,16 @@ namespace ProudChickenEksamen.Services
             }
         }
 
-        public void FiltrerEfterSMSDato(string b, string c)
+        public List<(DateTime, string, int)> FiltrerEfterSMSDato(string b, string c)
         {          
-            List<Kunde> kundeliste = repository.LoadKunder(); 
-
+            List<Kunde> kundeliste = repository.LoadKunder();
+            List<(DateTime, string, int)> matchendeBesked = new List<(DateTime, string, int)>();
             DateTime fra = DateTime.ParseExact(b, "dd-MM yy", CultureInfo.InvariantCulture);
             DateTime til = DateTime.ParseExact(c, "dd-MM yy", CultureInfo.InvariantCulture);
 
             foreach (Kunde k in kundeliste)
             {
-                List<(DateTime, string)> matchendeBesked = new List<(DateTime, string)>();
+                 
 
                 for (int i = 0; i < k.SendtSMSDato.Count; i++)
                 {
@@ -314,33 +315,23 @@ namespace ProudChickenEksamen.Services
                     if (dato >= fra && dato <= til)
                     {
                         string nummerType = i < k.SendtSMS.Count ? k.SendtSMS[i] : "Ukendt";
-                        matchendeBesked.Add((dato, nummerType));
+                        matchendeBesked.Add((dato, nummerType, k.Id));
                     }
-                }
-
-                if (matchendeBesked.Count > 0)
-                {
-                    Console.WriteLine("Kunde Id: " + k.Id);
-
-                    foreach ((DateTime dato, string nummerType) in matchendeBesked)
-                    {
-                        Console.WriteLine($"{dato:dd-MM yy} - SMS nummer: {nummerType}");
-                    }
-                    Console.WriteLine("\n");
                 }
             }
+            return matchendeBesked;
         }
 
-        public void FiltrerEfterEmailDato(string b, string c)
+        public List<(DateTime, string, int)> FiltrerEfterEmailDato(string b, string c)
         {
             List<Kunde> kundeliste = repository.LoadKunder();
-
+            List<(DateTime, string, int)> matchendeBesked = new List<(DateTime, string, int)>();
             DateTime fra = DateTime.ParseExact(b, "dd-MM yy", CultureInfo.InvariantCulture);
             DateTime til = DateTime.ParseExact(c, "dd-MM yy", CultureInfo.InvariantCulture);
 
             foreach (Kunde k in kundeliste)
             {
-                List<(DateTime, string)> matchendeBesked = new List<(DateTime, string)>();
+                
 
                 for (int i = 0; i < k.SendtEmailDato.Count; i++)
                 {
@@ -349,21 +340,11 @@ namespace ProudChickenEksamen.Services
                     if (dato >= fra && dato <= til)
                     {
                         string nummerType = i < k.SendtEmail.Count ? k.SendtEmail[i] : "Ukendt";
-                        matchendeBesked.Add((dato, nummerType));
+                        matchendeBesked.Add((dato, nummerType, k.Id));
                     }
-                }
-
-                if (matchendeBesked.Count > 0)
-                {
-                    Console.WriteLine("Kunde Id: " + k.Id);
-
-                    foreach ((DateTime dato, string nummerType) in matchendeBesked)
-                    {
-                        Console.WriteLine($"{dato:dd-MM yy} - Email nummer: {nummerType}");
-                    }
-                    Console.WriteLine("\n");
                 }
             }
+            return matchendeBesked;
         }
     }
 }

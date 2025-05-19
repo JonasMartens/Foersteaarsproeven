@@ -1,5 +1,6 @@
 ﻿using ProudChickenEksamen.Controller;
 
 Console.WriteLine();
-Controller controller = new Controller();
+SQLController controller = new SQLController();
+//Controller controller = new Controller();
 controller.Run();
