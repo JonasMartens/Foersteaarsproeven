@@ -35,12 +35,57 @@ namespace ProudChickenEksamen.Data
         }
         public void Delete()
         {
-            throw new NotImplementedException();
+            string connectionString = @"Data Source=LAPTOP-U1TFVM09;Initial Catalog=Kunder;Integrated Security=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM TING", connection, transaction))
+                    {
+                        deleteCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
 
         public void Insert()
         {
-            throw new NotImplementedException();
+            string connectionString = @"Data Source=LAPTOP-U1TFVM09;Initial Catalog=Kunder;Integrated Security=True;";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    DateTime date = DateTime.Now;
+                    using (SqlCommand insertCommand = new SqlCommand(
+                        $"INSERT INTO smsData(kommunekode, vejkode, vejadresseringsnavn, husnummer, smsType, smsDato) " +
+                        "VALUES(@kommunekode, @vejkode, @vejadresseringsnavn, @husnummer, @smsType, @smsDato)", connection, transaction))
+                    {
+                        insertCommand.Parameters.AddWithValue("@kommunekode", 85);
+                        insertCommand.Parameters.AddWithValue("@vejkode", 85);
+                        insertCommand.Parameters.AddWithValue("@vejadresseringsnavn", "85");
+                        insertCommand.Parameters.AddWithValue("@husnummer", "87");
+
+                        insertCommand.Parameters.AddWithValue("@smsType", 85);
+                        insertCommand.Parameters.AddWithValue("@smsDato", date);
+                        insertCommand.ExecuteNonQuery();
+                    }
+                    
+                    transaction.Commit();
+                }
+                catch 
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
         }
 
 

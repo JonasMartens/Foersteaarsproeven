@@ -9,6 +9,11 @@ namespace ProudChickenEksamen.Data
     {
         private readonly string filePath = "kunder.json";
 
+        public string databaseConnection(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete()
         {
             throw new NotImplementedException();

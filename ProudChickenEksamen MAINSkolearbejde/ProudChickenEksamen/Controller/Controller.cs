@@ -13,8 +13,13 @@ namespace ProudChickenEksamen.Controller
     class Controller
     {
         
-        GUI Gui = new GUI();
-        Chicken Chicken = new Chicken();
+        GUI Gui;
+        Chicken Chicken;
+        public Controller(IRepository repository)
+        {
+           Gui = new GUI();
+           Chicken = new Chicken(repository);
+        }
         public void Run()
         {
             while (true)

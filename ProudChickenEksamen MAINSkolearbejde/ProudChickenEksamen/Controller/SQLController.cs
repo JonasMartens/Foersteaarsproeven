@@ -12,9 +12,13 @@ namespace ProudChickenEksamen.Controller
 {
     class SQLController
     {
-        SQLRepository repository = new SQLRepository();
-        GUI Gui = new GUI();
-        Chicken Chicken = new Chicken();
+        GUI Gui;
+        Chicken Chicken;
+        public SQLController(IRepository rep)
+        {            
+             Gui = new GUI();
+             Chicken = new Chicken(rep);
+        }
         public void Run()
         {
             while (true)
@@ -24,12 +28,11 @@ namespace ProudChickenEksamen.Controller
                 switch (choice)
                 {
                     case 1:
-                        string a = repository.databaseConnection(repository.Read(1));
-                        Console.WriteLine(a);                    
+                        Chicken.ForbindelseTilSQLRepository();                
                         break;
 
                     case 2:
-                        EmailValgOgKriterieValg();
+                        //IRepository.insert();
                         break;
 
                     case 3:

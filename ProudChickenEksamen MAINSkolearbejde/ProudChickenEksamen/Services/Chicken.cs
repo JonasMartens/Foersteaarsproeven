@@ -13,18 +13,20 @@ namespace ProudChickenEksamen.Services
 {
     class Chicken
     {
+
         public List<SMS> SMSList = new List<SMS>();
         private List<SMS> nySMSListe = new List<SMS>();
 
         public List<EMail> EmailList = new List<EMail>();
         private List<EMail> nyEmailListe = new List<EMail>();
 
-        private IRepository repository = new JsonRepository();
+        public IRepository repository;
 
         GUI Gui = new GUI();
 
-        public Chicken()
+        public Chicken(IRepository repository)
         {
+            this.repository = repository;
             SMS sms1 = new SMS() { ID = 1, SMSStandardBesked = "Velkommen til Proud Chickens SMS Service." };
             SMS sms2 = new SMS() { ID = 2, SMSStandardBesked = "Vores FoodTruck er netop nu på vej til sin sædvanlige plads. \nVi ses snart." };
             SMS sms3 = new SMS() { ID = 3, SMSStandardBesked = "Vi er kede af, at De ikke længere er medlem af Proud Chickens SMS Service." };
@@ -345,6 +347,11 @@ namespace ProudChickenEksamen.Services
                 }
             }
             return matchendeBesked;
+        }
+        public void ForbindelseTilSQLRepository()
+        {
+             repository.Insert();
+            
         }
     }
 }
