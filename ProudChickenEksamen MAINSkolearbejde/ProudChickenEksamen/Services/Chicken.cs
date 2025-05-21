@@ -220,8 +220,9 @@ namespace ProudChickenEksamen.Services
 
         public void smsValgChicken(int smsValg)
         {
+            string v = "SELECT * FROM KontaktView WHERE myndighedsnavn = 'Aarhus'";
             string områdeNr = Gui.VælgOmrådeNummer();
-            List<Kunde> nuværendeKundeData = repository.LoadKunder();
+            List<Kunde> nuværendeKundeData = repository.databaseConnection();
             List<Kunde> matchendeKunderOmrådeNr = FindKunderOmrådeNr(områdeNr);
             List<Kunde> opdateretKundeData = new List<Kunde>();
             Gui.VisHeleKundeListenMedAlleInfo(matchendeKunderOmrådeNr);
@@ -348,10 +349,9 @@ namespace ProudChickenEksamen.Services
             }
             return matchendeBesked;
         }
-        public void ForbindelseTilSQLRepository()
+        public void ForbindelseTilSQLRepository(int a)
         {
-             repository.Insert();
-            
+             repository.Insert(a);            
         }
     }
 }

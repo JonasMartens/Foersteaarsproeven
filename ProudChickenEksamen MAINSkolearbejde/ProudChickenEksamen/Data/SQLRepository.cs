@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProudChickenEksamen.Data
 {
@@ -54,7 +55,7 @@ namespace ProudChickenEksamen.Data
             }
         }
 
-        public void Insert()
+        public void Insert(int smsType)
         {
             string connectionString = @"Data Source=LAPTOP-U1TFVM09;Initial Catalog=Kunder;Integrated Security=True;";
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -65,16 +66,8 @@ namespace ProudChickenEksamen.Data
                 {
                     DateTime date = DateTime.Now;
                     using (SqlCommand insertCommand = new SqlCommand(
-                        $"INSERT INTO smsData(kommunekode, vejkode, vejadresseringsnavn, husnummer, smsType, smsDato) " +
-                        "VALUES(@kommunekode, @vejkode, @vejadresseringsnavn, @husnummer, @smsType, @smsDato)", connection, transaction))
+                        $"INSERT INTO SmsBeskeder (smsType, smsDato) VALUES({smsType}, CAST(GETDATE() AS DATE));", connection, transaction))
                     {
-                        insertCommand.Parameters.AddWithValue("@kommunekode", 85);
-                        insertCommand.Parameters.AddWithValue("@vejkode", 85);
-                        insertCommand.Parameters.AddWithValue("@vejadresseringsnavn", "85");
-                        insertCommand.Parameters.AddWithValue("@husnummer", "87");
-
-                        insertCommand.Parameters.AddWithValue("@smsType", 85);
-                        insertCommand.Parameters.AddWithValue("@smsDato", date);
                         insertCommand.ExecuteNonQuery();
                     }
                     

@@ -17,7 +17,7 @@ namespace ProudChickenEksamen.Data
 
         public void SaveKunder(List<Kunde> kunder);
 
-        public void Insert();
+        public void Insert(int smsType);
 
         public void Update();
 

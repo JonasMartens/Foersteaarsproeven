@@ -19,7 +19,7 @@ namespace ProudChickenEksamen.Data
             throw new NotImplementedException();
         }
 
-        public void Insert()
+        public void Insert(int smsType)
         {
             throw new NotImplementedException();
         }
