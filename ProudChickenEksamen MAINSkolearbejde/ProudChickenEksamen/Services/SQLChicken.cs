@@ -135,7 +135,7 @@ namespace ProudChickenEksamen.Services
             while (i < kundeliste.Count)
             {
                 Kunde kunde = kundeliste[i];
-                if (kunde.By == by)
+                if (kunde.myndighedsnavn == by)
                 {
                     matchendeKunder.Add(kunde);
                 }
@@ -153,7 +153,7 @@ namespace ProudChickenEksamen.Services
             while (i < kundeliste.Count)
             {
                 Kunde kunde = kundeliste[i];
-                if (kunde.Id == Id)
+                if (kunde.id == Id)
                 {
                     matchendeKunder.Add(kunde);
                 }
@@ -183,7 +183,7 @@ namespace ProudChickenEksamen.Services
                     }
                     j++;
                 }                
-                string kundeMedAntalString = "Kunde " + kunde.Id + " har modtaget " + antalSms + " styk af type nr. " + smsType1;
+                string kundeMedAntalString = "Kunde " + kunde.id + " har modtaget " + antalSms + " styk af type nr. " + smsType1;
                 kundeModtogAntalSms.Add(kundeMedAntalString);
                 i++;
             }
@@ -211,26 +211,24 @@ namespace ProudChickenEksamen.Services
                     }
                     j++;
                 }
-                string kundeMedAntalString = "Kunde " + kunde.Id + " har modtaget " + antalEmail + " styk af type nr. " + emailType1;
+                string kundeMedAntalString = "Kunde " + kunde.id + " har modtaget " + antalEmail + " styk af type nr. " + emailType1;
                 kundeModtogAntalEmail.Add(kundeMedAntalString);
                 i++;
             }
             return kundeModtogAntalEmail;
         }
 
-        public string OmrådeNummerValg()
+        public List<Kunde> OmrådeNummerValg()
         {
             string områdeNr = Gui.VælgOmrådeNummer();
-            string v = $"SELECT * FROM KontaktView WHERE PostNummer = '{områdeNr}'";
-            string db = repository.databaseConnection(v);
+            List<Kunde> db = repository.databaseConnection($"SELECT * FROM kontaktoplysninger WHERE PostNummer = '{områdeNr}'");
             return db;
         }
 
-        public string ByNavnValg()
+        public List<Kunde> ByNavnValg()
         {
             string by = Gui.VælgBy();
-            string v = $"SELECT * FROM KontaktView WHERE myndighedsnavn = '{by}'";
-            string db = repository.databaseConnection(v);
+            List<Kunde> db = repository.databaseConnection($"SELECT * FROM kontaktoplysninger WHERE myndighedsnavn = '{by}'");
             return db;
         }
 
@@ -252,7 +250,7 @@ namespace ProudChickenEksamen.Services
                     if (dato >= fra && dato <= til)
                     {
                         string nummerType = i < k.SendtSMS.Count ? k.SendtSMS[i] : "Ukendt";
-                        matchendeBesked.Add((dato, nummerType, k.Id));
+                        matchendeBesked.Add((dato, nummerType, k.id));
                     }
                 }
             }
@@ -277,15 +275,15 @@ namespace ProudChickenEksamen.Services
                     if (dato >= fra && dato <= til)
                     {
                         string nummerType = i < k.SendtEmail.Count ? k.SendtEmail[i] : "Ukendt";
-                        matchendeBesked.Add((dato, nummerType, k.Id));
+                        matchendeBesked.Add((dato, nummerType, k.id));
                     }
                 }
             }
             return matchendeBesked;
         }
-        public void ForbindelseTilSQLRepository(int a)
+        public void ForbindelseTilSQLRepository(int smsValg)
         {
-             repository.Insert(a);            
+             repository.Insert(smsValg);            
         }
     }
 }

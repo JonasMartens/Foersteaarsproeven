@@ -54,5 +54,10 @@ namespace ProudChickenEksamen.Data
         {
             throw new NotImplementedException();
         }
+
+        List<Kunde> IRepository.databaseConnection(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

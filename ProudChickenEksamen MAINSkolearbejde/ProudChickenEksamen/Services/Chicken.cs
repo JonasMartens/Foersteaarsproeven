@@ -17,8 +17,8 @@
 //        public List<SMS> SMSList = new List<SMS>();
 //        private List<SMS> nySMSListe = new List<SMS>();
 
-//        public List<EMail> EmailList = new List<EMail>();
-//        private List<EMail> nyEmailListe = new List<EMail>();
+//        public List<email> EmailList = new List<email>();
+//        private List<email> nyEmailListe = new List<email>();
 
 //        public IRepository repository;
 
@@ -37,10 +37,10 @@
 //            SMSList.Add(sms3);
 //            SMSList.Add(sms4);
 
-//            EMail email1 = new EMail() { ID = 1, EmailStandardBesked = "Velkommen til Proud Chickens Email Service." };
-//            EMail email2 = new EMail() { ID = 2, EmailStandardBesked = "Vores FoodTruck er netop nu på vej til sin sædvanlige plads. \nVi ses snart." };
-//            EMail email3 = new EMail() { ID = 3, EmailStandardBesked = "Vi er kede af, at De ikke længere er medlem af Proud Chickens Email Service." };
-//            EMail email4 = new EMail() { ID = 4, EmailStandardBesked = "brugerInput" };
+//            email email1 = new email() { ID = 1, EmailStandardBesked = "Velkommen til Proud Chickens Email Service." };
+//            email email2 = new email() { ID = 2, EmailStandardBesked = "Vores FoodTruck er netop nu på vej til sin sædvanlige plads. \nVi ses snart." };
+//            email email3 = new email() { ID = 3, EmailStandardBesked = "Vi er kede af, at De ikke længere er medlem af Proud Chickens Email Service." };
+//            email email4 = new email() { ID = 4, EmailStandardBesked = "brugerInput" };
 
 //            EmailList.Add(email1);
 //            EmailList.Add(email2);
@@ -78,7 +78,7 @@
 //            return nySMSListe;
 //        }
 
-//        public List<EMail> EmailValgt(int emailType)
+//        public List<email> EmailValgt(int emailType)
 //        {
 //            nyEmailListe.Clear();
 
@@ -135,7 +135,7 @@
 //            while (i < kundeliste.Count)
 //            {
 //                Kunde kunde = kundeliste[i];
-//                if (kunde.By == by)
+//                if (kunde.myndighedsnavn == by)
 //                {
 //                    matchendeKunder.Add(kunde);
 //                }
@@ -144,7 +144,7 @@
 //            return matchendeKunder;
 //        }
 
-//        public List<Kunde> FindKunderID(int Id)
+//        public List<Kunde> FindKunderID(int id)
 //        {
 //            List<Kunde> kundeliste = repository.LoadKunder();
 //            List<Kunde> matchendeKunder = new List<Kunde>();
@@ -153,7 +153,7 @@
 //            while (i < kundeliste.Count)
 //            {
 //                Kunde kunde = kundeliste[i];
-//                if (kunde.Id == Id)
+//                if (kunde.id == id)
 //                {
 //                    matchendeKunder.Add(kunde);
 //                }
@@ -183,7 +183,7 @@
 //                    }
 //                    j++;
 //                }                
-//                string kundeMedAntalString = "Kunde " + kunde.Id + " har modtaget " + antalSms + " styk af type nr. " + smsType1;
+//                string kundeMedAntalString = "Kunde " + kunde.id + " har modtaget " + antalSms + " styk af type nr. " + smsType1;
 //                kundeModtogAntalSms.Add(kundeMedAntalString);
 //                i++;
 //            }
@@ -211,7 +211,7 @@
 //                    }
 //                    j++;
 //                }
-//                string kundeMedAntalString = "Kunde " + kunde.Id + " har modtaget " + antalEmail + " styk af type nr. " + emailType1;
+//                string kundeMedAntalString = "Kunde " + kunde.id + " har modtaget " + antalEmail + " styk af type nr. " + emailType1;
 //                kundeModtogAntalEmail.Add(kundeMedAntalString);
 //                i++;
 //            }
@@ -236,7 +236,7 @@
 //                {
 //                    Kunde kunde = nuværendeKundeData[i];
 
-//                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
+//                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.id == kunde.id);
 
 //                    if (kunde1 == null)
 //                    {
@@ -276,7 +276,7 @@
 //                {
 //                    Kunde kunde = nuværendeKundeData[i];
 
-//                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.Id == kunde.Id);
+//                    Kunde kunde1 = matchendeKunderOmrådeNr.Find(x => x.id == kunde.id);
 
 //                    if (kunde1 == null)
 //                    {
@@ -318,7 +318,7 @@
 //                    if (dato >= fra && dato <= til)
 //                    {
 //                        string nummerType = i < k.SendtSMS.Count ? k.SendtSMS[i] : "Ukendt";
-//                        matchendeBesked.Add((dato, nummerType, k.Id));
+//                        matchendeBesked.Add((dato, nummerType, k.id));
 //                    }
 //                }
 //            }
@@ -343,7 +343,7 @@
 //                    if (dato >= fra && dato <= til)
 //                    {
 //                        string nummerType = i < k.SendtEmail.Count ? k.SendtEmail[i] : "Ukendt";
-//                        matchendeBesked.Add((dato, nummerType, k.Id));
+//                        matchendeBesked.Add((dato, nummerType, k.id));
 //                    }
 //                }
 //            }

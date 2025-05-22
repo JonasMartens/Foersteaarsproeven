@@ -19,7 +19,9 @@ namespace ProudChickenEksamen.Controller
         {
            Gui = new GUI();
            Chicken = new Chicken(repository);
+           
         }
+        SQLRepository repository1 = new SQLRepository();
         public void Run()
         {
             while (true)
@@ -29,8 +31,8 @@ namespace ProudChickenEksamen.Controller
                 switch (choice)
                 {
                     case 1:
-                        SMSValgOgKriterieValg();
-                        
+                        //SMSValgOgKriterieValg();
+                        repository1.databaseConnection(Gui.VælgOmrådeNummer());
                         break;
 
                     case 2:
@@ -114,11 +116,11 @@ namespace ProudChickenEksamen.Controller
             switch (kriterieValg)
             {
                 case 1:
-                    Gui.PrintListe(Chicken.OmrådeNummerValg());
+                    //Gui.PrintListe(Chicken.OmrådeNummerValg());
                     break;
 
                 case 2:
-                    Gui.PrintListe(Chicken.ByNavnValg());
+                    //Gui.PrintListe(Chicken.ByNavnValg());
 
                     break;
 
@@ -138,11 +140,11 @@ namespace ProudChickenEksamen.Controller
             switch (kriterieValg)
             {
                 case 1:
-                    Gui.PrintListe(Chicken.OmrådeNummerValg());
+                    //Gui.PrintListe(Chicken.OmrådeNummerValg());
                     break;
 
                 case 2:
-                    Gui.PrintListe(Chicken.ByNavnValg());
+                    //Gui.PrintListe(Chicken.ByNavnValg());
                     break;
 
                 default:

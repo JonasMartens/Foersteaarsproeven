@@ -35,7 +35,7 @@ namespace ProudChickenEksamen.View
 
                 if (!visteKundeIds.Contains(kundeId))
                 {
-                    Console.WriteLine("Kunde Id: " + kundeId);
+                    Console.WriteLine("Kunde id: " + kundeId);
 
                     foreach (var b in matchendeBesked)
                     {
@@ -61,7 +61,7 @@ namespace ProudChickenEksamen.View
 
                 if (!visteKundeIds.Contains(kundeId))
                 {
-                    Console.WriteLine("Kunde Id: " + kundeId);
+                    Console.WriteLine("Kunde id: " + kundeId);
 
                     foreach (var b in matchendeBesked)
                     {
@@ -98,7 +98,7 @@ namespace ProudChickenEksamen.View
 
         public int VælgListeFraOmrådeNrEllerBy()
         {
-            Console.WriteLine("Vælg mellem: OmrådeNr (1), By (2).");
+            Console.WriteLine("Vælg mellem: OmrådeNr (1), myndighedsnavn (2).");
             return int.Parse(Console.ReadLine());
         }
 
@@ -110,7 +110,7 @@ namespace ProudChickenEksamen.View
 
         public string VælgBy()
         {
-            Console.WriteLine("Indtast By:");
+            Console.WriteLine("Indtast myndighedsnavn:");
             return Console.ReadLine();
         }
 
@@ -193,7 +193,7 @@ namespace ProudChickenEksamen.View
             int i = 0;
             while (i < kunder.Count)
             {
-                Console.WriteLine("Kunde ID: " + kunder[i].Id);
+                Console.WriteLine("Kunde ID: " + kunder[i].id);
                 i++;
             }
             Console.WriteLine("");
@@ -208,11 +208,11 @@ namespace ProudChickenEksamen.View
                 return kunder;
             }
 
-            Console.WriteLine("\nDisse kunder bor i byen: " + kunder[0].By);
+            Console.WriteLine("\nDisse kunder bor i byen: " + kunder[0].myndighedsnavn);
             int i = 0;
             while (i < kunder.Count)
             {
-                Console.WriteLine("Kunde ID: " + kunder[i].Id);
+                Console.WriteLine("Kunde ID: " + kunder[i].id);
                 i++;
             }
             Console.WriteLine("");
@@ -227,12 +227,12 @@ namespace ProudChickenEksamen.View
                 return kunder;
             }
 
-            Console.WriteLine("\nKundeId nummer: " + kunder[0].Id + " tilhører ");
+            Console.WriteLine("\nKundeId nummer: " + kunder[0].id + " tilhører ");
             int i = 0;
             while (i < kunder.Count)
             {
-                Console.WriteLine($"\nNavn: {kunder[i].navn}\nAdresse: {kunder[i].Adresse}\nOmrådenr: {kunder[i].OmrådeNr}" +
-                    $"\nBy: {kunder[i].By}\nMobilnr: {kunder[i].MobilNr}\nEmail: {kunder[i].EMail}");
+                Console.WriteLine($"\nNavn: {kunder[i].navn}\nAdresse: {kunder[i].vejadresseringsnavn}\nOmrådenr: {kunder[i].OmrådeNr}" +
+                    $"\nBy: {kunder[i].myndighedsnavn}\nMobilnr: {kunder[i].mobilnummer}\nEmail: {kunder[i].email}");
                 i++;
             }
             Console.WriteLine("");
@@ -276,8 +276,8 @@ namespace ProudChickenEksamen.View
             int i = 0;
             while (i < kunder.Count)
             {
-                Console.WriteLine($"\nID: {kunder[i].Id}, navn: {kunder[i].navn}, adresse: {kunder[i].Adresse}, områdenr: {kunder[i].OmrådeNr}, " +
-                    $"by: {kunder[i].By}, mobilnr: {kunder[i].MobilNr}, email: {kunder[i].EMail}");
+                Console.WriteLine($"\nID: {kunder[i].id}, navn: {kunder[i].navn}, adresse: {kunder[i].vejadresseringsnavn}, områdenr: {kunder[i].OmrådeNr}, " +
+                    $"by: {kunder[i].myndighedsnavn}, mobilnr: {kunder[i].mobilnummer}, email: {kunder[i].email}");
 
                 if (kunder[i].SendtSMS != null)
                 {

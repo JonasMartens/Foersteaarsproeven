@@ -24,6 +24,6 @@ namespace ProudChickenEksamen.Data
         public void Delete();
 
         public string Read(int a);
-        string databaseConnection(string v);
+        List<Kunde> databaseConnection(string v);
     }
 }
