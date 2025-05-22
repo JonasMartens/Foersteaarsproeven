@@ -3,5 +3,5 @@ using ProudChickenEksamen.Data;
 
 Console.WriteLine();
 IRepository repository = new SQLRepository();
-SQLController controller = new SQLController(repository);
+Controller controller = new Controller(repository);
 controller.Run();

@@ -29,7 +29,8 @@ namespace ProudChickenEksamen.Controller
                 switch (choice)
                 {
                     case 1:
-                        SMSValgOgKriterieValg();                        
+                        SMSValgOgKriterieValg();
+                        
                         break;
 
                     case 2:
@@ -107,19 +108,17 @@ namespace ProudChickenEksamen.Controller
         public void SMSValgOgKriterieValg()
         {
             int kriterieValg = Gui.VælgListeFraOmrådeNrEllerBy();
-            int smsValg = Gui.VælgSMS();
+            int smsValg = Gui.VælgSMS();            
             Gui.Print(Chicken.SMSValgt(smsValg));
-            
+            Chicken.ForbindelseTilSQLRepository(smsValg);
             switch (kriterieValg)
             {
                 case 1:
-                    Chicken.smsValgChicken(smsValg);
+                    Gui.PrintListe(Chicken.OmrådeNummerValg());
                     break;
 
-                case 2: 
-                    string by = Gui.VælgBy();
-                    List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
-                    Gui.VisHeleKundeListenMedAlleInfo(matchendeKunderBy);
+                case 2:
+                    Gui.PrintListe(Chicken.ByNavnValg());
 
                     break;
 
@@ -134,16 +133,16 @@ namespace ProudChickenEksamen.Controller
             int kriterieValg = Gui.VælgListeFraOmrådeNrEllerBy();
             int EmailValg = Gui.VælgEMail();
             Gui.Print(Chicken.EmailValgt(EmailValg));
+
+            //Chicken.ForbindelseTilSQLRepository(EmailValg);
             switch (kriterieValg)
             {
                 case 1:
-                    Chicken.EmailValgChicken(EmailValg);
+                    Gui.PrintListe(Chicken.OmrådeNummerValg());
                     break;
 
                 case 2:
-                    string by = Gui.VælgBy();
-                    List<Kunde> matchendeKunderBy = Chicken.FindKunderBy(by);
-                    Gui.VisHeleKundeListenMedAlleInfo(matchendeKunderBy);
+                    Gui.PrintListe(Chicken.ByNavnValg());
                     break;
 
                 default:

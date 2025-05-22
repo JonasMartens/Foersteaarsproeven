@@ -17,7 +17,6 @@ namespace ProudChickenEksamen.View
             {
                 Console.WriteLine("Vælg Metode: Send SMS (1), Send Email (2), Søg i kundeliste (3)");
                 return int.Parse(Console.ReadLine());
-
             }
             catch 
             { 
@@ -113,6 +112,11 @@ namespace ProudChickenEksamen.View
         {
             Console.WriteLine("Indtast By:");
             return Console.ReadLine();
+        }
+
+        public void PrintListe(string a)
+        {           
+                Console.WriteLine(a);                
         }
 
         public string VælgStartDatoOgSlutDato()
