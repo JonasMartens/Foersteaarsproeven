@@ -1,0 +1,63 @@
+﻿<Window x:Class="ProudChickenEksamenProjektWPFMain.SendBesked"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProudChickenEksamenProjektWPFMain"
+        mc:Ignorable="d"
+        Title="Send Besked"
+        Height="450"
+        Width="800"
+        Background="#FAFAFA"
+        FontFamily="Segoe UI"
+        FontSize="14">
+
+    <Grid Margin="40">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="300">
+
+            <TextBlock Text="Vælg beskedtype:" FontWeight="Bold" Margin="0,0,0,8"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                <RadioButton x:Name="Sms" GroupName="BeskedValg" Content="SMS" Margin="0,0,16,0"/>
+                <RadioButton x:Name="Email" GroupName="BeskedValg" Content="Email"/>
+            </StackPanel>
+
+            <ComboBox x:Name="BeskedType"
+                      Height="30"
+                      Width="200"
+                      Loaded="ComboBox_Loaded"
+                      SelectionChanged="ComboBox_SelectionChanged"
+                      Margin="0,0,0,16" />
+
+            <TextBlock Text="Vælg stedstype:" FontWeight="Bold" Margin="0,0,0,8"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                <RadioButton x:Name="By" Content="By" GroupName="StedValg" Margin="0,0,16,0"/>
+                <RadioButton x:Name="OmrådeNr" Content="OmrådeNr" GroupName="StedValg"/>
+            </StackPanel>
+
+            <TextBox x:Name="StedValg"
+                     Width="200"
+                     Height="30"
+                     VerticalContentAlignment="Center"
+                     Padding="6"
+                     Margin="0,0,0,16"
+                     />
+
+            <Button Content="Load Kunder"
+                    Width="120"
+                    Height="35"
+                    Background="#0078D7"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    Click="Button_Click"
+                    Margin="0,10,0,0"
+                    BorderThickness="0"
+                    Cursor="Hand"/>
+        </StackPanel>
+        <ListBox x:Name="MyListBox"
+         Margin="449,0,0,0"
+         SelectionChanged="ListBox_SelectionChanged"/>
+
+    </Grid>
+</Window>
